@@ -1,0 +1,22 @@
+<project>
+  <groupId>WordCount</groupId>
+  <artifactId>WordCount</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>Word Count</name>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+  </properties>
+  <dependencies>
+    <dependency> <!-- Spark dependency -->
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-sql_2.12</artifactId>
+      <version>3.3.0</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>
