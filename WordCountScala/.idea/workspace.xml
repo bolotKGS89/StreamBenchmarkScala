@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec2849d1-b6d8-40c2-8f78-2d839fdbc91c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Spark/WordCountScala/.idea/modules/WordCountScala-build.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spark/WordCountScala/.idea/modules/WordCountScala.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spark/WordCountScala/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spark/WordCountScala/src/main/scala/Counter.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spark/WordCountScala/src/main/scala/Splitter.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spark/WordCountScala/src/main/scala/Util/Log.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spark/WordCountScala/target/scala-2.13/classes/wordCount/FileParserSource.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spark/WordCountScala/target/scala-2.13/classes/wordCount/SparkWordCount$.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spark/WordCountScala/target/scala-2.13/classes/wordCount/SparkWordCount.class" afterDir="false" />
-    </list>
+    <list default="true" id="6acff477-b5fa-44e8-b79b-8a47eeda6900" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,54 +18,16 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="SBT">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="WordCountScala" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="WordCountScala" type="f1a62948:ProjectNode" />
-                <item name="WordCountScala" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="WordCountScala" type="f1a62948:ProjectNode" />
-                <item name="WordCountScala" type="2d1252cf:ModuleNode" />
-                <item name="sbt tasks" type="d9357504:SbtViewContributor$SbtTasksGroupNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="WordCountScala" type="f1a62948:ProjectNode" />
-                <item name="WordCountScala-build" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="WordCountScala" type="f1a62948:ProjectNode" />
-                <item name="WordCountScala-build" type="2d1252cf:ModuleNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Scala Worksheet" />
+        <option value="Scala Object" />
+        <option value="Package Object" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -83,7 +35,7 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectId" id="2EqbLOoJjXvkNRz1q6C3Ds1qoz1" />
+  <component name="ProjectId" id="2HxscA2mrZ5HvYlcuq9LhfZty6S" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -94,14 +46,8 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/bolot/Documents/Thesis/StreamBenchmarks/Storm/WordCount&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2724138&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/bolot/Documents/Thesis/StreamBenchmarks/Flink/WordCount&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
@@ -112,15 +58,40 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/scala/WordCount" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/scala" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="WordCount" />
+      <recent name="Util" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="SparkWordCount" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="wordCount.SparkWordCount" />
+    <configuration name="WordCountScala" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="WordCount.SparkWordCount" />
+      <module name="WordCount" />
+      <option name="PROGRAM_PARAMETERS" value="hdfs://127.0.0.1:9000/ e" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
       <module name="WordCountScala" />
-      <option name="PROGRAM_PARAMETERS" value="hdfs://127.0.0.1:9000/ dfsdf" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="WordCountScala" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,11 +100,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ec2849d1-b6d8-40c2-8f78-2d839fdbc91c" name="Changes" comment="" />
-      <created>1663326006088</created>
+      <changelist id="6acff477-b5fa-44e8-b79b-8a47eeda6900" name="Changes" comment="" />
+      <created>1669238148113</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1663326006088</updated>
+      <updated>1669238148113</updated>
     </task>
     <servers />
   </component>

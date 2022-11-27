@@ -1,6 +1,6 @@
 ThisBuild / version := "0.1.0-SNAPSHOT"
 
-ThisBuild / scalaVersion := "2.13.0"
+ThisBuild / scalaVersion := "2.13.10"
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "3.2.2",
@@ -12,5 +12,5 @@ libraryDependencies ++= Seq(
 
 lazy val root = (project in file("."))
   .settings(
-    name := "WordCountScala"
+    name := "test"
   )

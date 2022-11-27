@@ -19,7 +19,7 @@
     </projectState>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -35,7 +35,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "last_opened_file_path": "/home/bolot/Documents/Thesis/StreamBenchmarks/Spark/SpikeDetectionScala",
+    "last_opened_file_path": "/home/bolot/Documents/Thesis/StreamBenchmarks/Spark/WordCountScala",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   },
   "keyToStringList": {
@@ -50,9 +50,9 @@
     <configuration name="SpikeDetection" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="spikeDetection.SparkSpikeDetection" />
+      <option name="MAIN_CLASS_NAME" value="SpikeDetection.SparkSpikeDetection" />
       <module name="SpikeDetectionScala" />
-      <option name="PROGRAM_PARAMETERS" value="hdfs://127.0.0.1:9000/test dfsdf temp" />
+      <option name="PROGRAM_PARAMETERS" value="hdfs://127.0.0.1:9000/ dfsdf temp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
