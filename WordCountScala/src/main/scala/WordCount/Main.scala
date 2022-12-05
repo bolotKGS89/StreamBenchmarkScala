@@ -2,7 +2,6 @@ package WordCount
 
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
-import Util.MetricsCollector
 
 object SparkWordCount {
   def main(args: Array[String]): Unit = {

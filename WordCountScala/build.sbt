@@ -12,5 +12,5 @@ libraryDependencies ++= Seq(
 
 lazy val root = (project in file("."))
   .settings(
-    name := "test"
+    name := "SpikeDetectionScala"
   )

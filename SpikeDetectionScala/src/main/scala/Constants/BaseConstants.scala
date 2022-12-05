@@ -1,6 +1,6 @@
 package Constants
 
-object BaseConstants {
+trait BaseConstants {
   val HELP = "help"
 
   object BaseField {

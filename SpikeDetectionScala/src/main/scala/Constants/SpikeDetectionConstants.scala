@@ -1,7 +1,6 @@
 package Constants
-
-object SpikeDetectionConstants {
-  val DEFAULT_PROPERTIES = "/spikedetection/sd.properties"
+object SpikeDetectionConstants extends BaseConstants  {
+  val DEFAULT_PROPERTIES = "/sd.properties"
   val DEFAULT_TOPO_NAME = "SpikeDetection"
   val DEFAULT_THRESHOLD = 0.03d
 
@@ -13,11 +12,6 @@ object SpikeDetectionConstants {
     val PARSER_VALUE_FIELD = "sd.parser.value_field"
     val MOVING_AVERAGE_WINDOW = "sd.moving_average.window"
     val SPIKE_DETECTOR_THRESHOLD = "sd.spike_detector.threshold"
-  }
-
-  object Component {
-    val MOVING_AVERAGE = "moving_average"
-    val SPIKE_DETECTOR = "spike_detector"
   }
 
 

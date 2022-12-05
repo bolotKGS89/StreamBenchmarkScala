@@ -5,7 +5,8 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object SparkSpikeDetection {
   def main(args: Array[String]): Unit = {
-      if (args.length != 3) {
+
+    if (args.length != 3) {
         System.err.println("Wrong number of arguments: ")
         System.err.println(args.length)
         System.exit(1)
@@ -27,7 +28,8 @@ object SparkSpikeDetection {
     val filteredTuples = new SpikeDetection().execute(avgTuples)
 
     //4th stage
-    new ConsoleSink().print(filteredTuples)
+    // sampling should be cmd argument
+    new ConsoleSink(100L).print(filteredTuples)
 
     ssc.start()
     ssc.awaitTermination()
