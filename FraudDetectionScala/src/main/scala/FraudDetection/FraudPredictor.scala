@@ -7,7 +7,7 @@ class FraudPredictor extends Serializable {
 
   var predictor: ModelBasedPredictor = null;
 
-  def execute(lines: DStream[(String, String, Long)]): Unit = {
+  def execute(lines: DStream[(String, String, Long)]): DStream[(String, Double, String, Long)] = {
     lines.map((lines) => {
       val entityId = lines._1
       val record = lines._2

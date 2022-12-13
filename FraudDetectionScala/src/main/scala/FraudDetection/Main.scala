@@ -18,17 +18,19 @@ object SparkFraudDetection
     val regExVal = args(2)
 
     val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkFraudDetection")
-    val ssc = new StreamingContext(sparkConf, Seconds(7))
+    val ssc = new StreamingContext(sparkConf, Seconds(5))
 
+    //1st stage
     val lines = new FileParserSpout(inputFile, ssc).parseDataSet(regExVal)
 
+    //2nd stage
     val outlierLines = new FraudPredictor().execute(lines)
 
-
+    //3rd stage
+    // sampling should be cmd argument
+    new ConsoleSink(100L).print(outlierLines)
 
     ssc.start()
     ssc.awaitTermination()
-
-
   }
 }
