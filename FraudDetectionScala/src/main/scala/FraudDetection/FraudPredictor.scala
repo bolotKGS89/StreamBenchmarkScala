@@ -5,7 +5,7 @@ import org.apache.spark.streaming.dstream.DStream
 
 class FraudPredictor extends Serializable {
 
-  var predictor: ModelBasedPredictor = null;
+  private var predictor: ModelBasedPredictor = null;
 
   def execute(lines: DStream[(String, String, Long)]): DStream[(String, Double, String, Long)] = {
     lines.map((lines) => {
@@ -14,7 +14,7 @@ class FraudPredictor extends Serializable {
       val timestamp = lines._3
 
       val strategy = "mm"
-      if (strategy eq "mm") {
+      if (strategy.eq("mm")) {
         predictor = new MarkovModelPredictor(strategy)
       }
 
