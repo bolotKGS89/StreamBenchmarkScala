@@ -24,7 +24,7 @@ package Constants
  */
 
 /**
- * @author Alessandra Fais
+ * @author Bolot Kasybekov
  * @version May 2019
  *
  *          Constants peculiar of the FraudDetection application.

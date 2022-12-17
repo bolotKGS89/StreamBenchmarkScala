@@ -1,6 +1,11 @@
 package Util.config
 
 class Configuration {
+  val METRICS_ENABLED = "metrics.enabled"
+  val METRICS_REPORTER = "metrics.reporter"
+  val METRICS_INTERVAL_VALUE = "metrics.interval.value"
+  val METRICS_INTERVAL_UNIT = "metrics.interval.unit"
+  val METRICS_OUTPUT = "metrics.output"
 
   def getString(key: String): String = {
     var str: String = null

@@ -29,7 +29,9 @@ object SparkSpikeDetection {
 
     //4th stage
     // sampling should be cmd argument
-    new ConsoleSink(100L).print(filteredTuples)
+    val output = new ConsoleSink(100L).print(filteredTuples)
+
+    output.print(100)
 
     ssc.start()
     ssc.awaitTermination()

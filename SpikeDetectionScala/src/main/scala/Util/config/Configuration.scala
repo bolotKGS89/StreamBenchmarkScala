@@ -1,9 +1,5 @@
 package Util.config
 
-import org.apache.commons.lang.math.NumberUtils
-
-import java.util
-import java.util.{HashMap, Map}
 
 class Configuration {
 

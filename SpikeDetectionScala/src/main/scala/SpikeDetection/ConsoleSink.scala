@@ -4,13 +4,13 @@ import Util.Sampler
 import org.apache.spark.streaming.dstream.DStream
 
 class ConsoleSink(samplingRate: Long) {
-  private val latency = Sampler(samplingRate)
-  private var processed = 0
   private var tStart = 0L
   private var tEnd = 0L
 
-  def print(filteredTuples: DStream[(String, Double, Double, Long)]): Unit = {
+  def print(filteredTuples: DStream[(String, Double, Double, Long)]): DStream[(String, Double, Double, Long)] = {
     tStart = System.nanoTime
+    val latency = Sampler(samplingRate)
+    var processed = 0
 
     filteredTuples.transform({ rdd =>
         val res = rdd.map((tuple) => {
@@ -21,6 +21,7 @@ class ConsoleSink(samplingRate: Long) {
           val now = System.nanoTime
           latency.add((now - timestamp).toDouble / 1e3, now)
           processed += 1
+          (deviceId, movingAvgInstant, nextPropertyValue, timestamp)
         })
 
         res

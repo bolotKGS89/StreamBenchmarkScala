@@ -28,7 +28,8 @@ object SparkFraudDetection
 
     //3rd stage
     // sampling should be cmd argument
-    new ConsoleSink(100L).print(outlierLines)
+    val output = new ConsoleSink(100L).print(outlierLines)
+    output.print(100)
 
     ssc.start()
     ssc.awaitTermination()
