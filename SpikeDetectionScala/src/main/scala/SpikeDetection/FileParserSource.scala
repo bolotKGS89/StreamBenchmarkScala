@@ -19,31 +19,15 @@ class FileParserSource(path: String, ssc: StreamingContext)  {
       "volt" -> DatasetParsing.VoltField
     )
     lazy val valueFieldKey = fieldList.get(valueField).get
-
-    val date = new ListBuffer[String]
-    val time = new ListBuffer[String]
-    val epoch = new ListBuffer[Int]
-    val devices = new ListBuffer[String]
-    val temperature = new ListBuffer[Double]
-    val humidity = new ListBuffer[Double]
-    val light = new ListBuffer[Double]
-    val voltage = new ListBuffer[Double]
-    val metricsCollector = new MetricsCollector()
-    var index = 0
+    val counter = ssc.sparkContext.longAccumulator
 
     try {
       ssc.textFileStream(path).transform({ rdd =>
+        val startTime = System.nanoTime()
+
         val words = rdd.flatMap((line) => line.split("\n")).filter((line) => !line.isEmpty)
-          words.map(word => word.split("\\s+")).filter((splitWords) => splitWords.length == 8)
+          .map(word => word.split("\\s+")).filter((splitWords) => splitWords.length == 8)
             .map((splitWords) => {
-            date.addOne(splitWords(DatasetParsing.DateField))
-            time.addOne(splitWords(DatasetParsing.TimeField))
-            epoch.addOne(splitWords(DatasetParsing.EpochField).toInt)
-            devices.addOne(splitWords(DatasetParsing.DeviceIdField).toString)
-            temperature.addOne(splitWords(DatasetParsing.TempField).toDouble)
-            humidity.addOne(splitWords(DatasetParsing.HumidField).toDouble)
-            light.addOne(splitWords(DatasetParsing.LightField).toDouble)
-            voltage.addOne(splitWords(DatasetParsing.VoltField).toDouble)
             Log.log.debug("[Source] tuple: deviceID " + splitWords(DatasetParsing.DeviceIdField) +
               ", property " + valueField + " " + fieldList.get(valueField))
             Log.log.debug("[Source] fields: " +
@@ -56,23 +40,34 @@ class FileParserSource(path: String, ssc: StreamingContext)  {
               splitWords(DatasetParsing.LightField) + " " +
               splitWords(DatasetParsing.VoltField)
             )
-            null
-        }).map((data) => {
+
             val timestamp = System.nanoTime
+            counter.add(timestamp)
+
             val res = valueFieldKey match {
-              case valueFieldKey if (valueFieldKey == DatasetParsing.TempField) => (devices(index), temperature(index), timestamp)
-              case valueFieldKey if (valueFieldKey == DatasetParsing.HumidField) => (devices(index), humidity(index), timestamp)
-              case valueFieldKey if (valueFieldKey == DatasetParsing.LightField) => (devices(index), light(index), timestamp)
-              case _ => (devices(index), voltage(index), timestamp)
+              case valueFieldKey if (valueFieldKey == DatasetParsing.TempField) =>
+                (splitWords(DatasetParsing.DeviceIdField).toString, splitWords(DatasetParsing.TempField).toDouble, timestamp)
+              case valueFieldKey if (valueFieldKey == DatasetParsing.HumidField) =>
+                (splitWords(DatasetParsing.DeviceIdField).toString, splitWords(DatasetParsing.HumidField).toDouble, timestamp)
+              case valueFieldKey if (valueFieldKey == DatasetParsing.LightField) =>
+                (splitWords(DatasetParsing.DeviceIdField).toString, splitWords(DatasetParsing.LightField).toDouble, timestamp)
+              case _ =>
+                (splitWords(DatasetParsing.DeviceIdField).toString, splitWords(DatasetParsing.VoltField).toDouble, timestamp)
             }
-            index += 1
-            // rate is cmd argument
-            metricsCollector.collectMetrics(timestamp, 0, devices)
+
             res
         })
-        //metricsCollector.measureThroughput()
-      })
+        val endTime = System.nanoTime
+        val latency = endTime - startTime // Measure the time it took to process the data
+        Log.log.warn(s"[Source] latency: $latency")
 
+        val elapsedTime = (endTime - startTime) / 1000000000.0
+        val mbs: Double = (counter.sum / elapsedTime).toDouble
+        val formatted_mbs = String.format("%.5f", mbs)
+        Log.log.warn(s"[Source] bandwidth: $formatted_mbs MB/s")
+
+        words
+      })
     } catch {
       case _: FileNotFoundException | _: NullPointerException => {
         throw new RuntimeException(s"The file $path does not exists")

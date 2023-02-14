@@ -14,8 +14,7 @@ class MovingAverage extends Serializable {
   def execute(tuples: DStream[(String, Double, Long)]): DStream[(String, Double, Double, Long)] = {
 
     tuples.transform({ rdd =>
-      tStart = System.nanoTime
-
+      val startTime = System.nanoTime()
       val res = rdd.map((tuple) => {
         val deviceId = tuple._1
         val nextPropertyValue = tuple._2.toDouble
@@ -28,10 +27,12 @@ class MovingAverage extends Serializable {
           + movingAverageInstant + ", next_value "
           + nextPropertyValue + ", ts " + timestamp)
 
-//        tEnd = System.nanoTime
-
         (deviceId, movingAverageInstant, nextPropertyValue, timestamp)
       }) // ending should be done
+      val endTime = System.nanoTime
+      val latency = endTime - startTime // Measure the time it took to process the data
+      Log.log.warn(s"[Average] latency: $latency")
+
       res
     })
 
