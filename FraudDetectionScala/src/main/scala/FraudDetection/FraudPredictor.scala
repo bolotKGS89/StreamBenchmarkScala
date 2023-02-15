@@ -21,8 +21,8 @@ class FraudPredictor extends Serializable {
         val record = lines._2
         val timestamp = lines._3
 
-        val strategy = "mm"
-        if (strategy.eq(predModel)) {
+        val strategy = predModel
+        if (strategy.eq("mm")) {
           predictor = new MarkovModelPredictor(strategy)
         }
 

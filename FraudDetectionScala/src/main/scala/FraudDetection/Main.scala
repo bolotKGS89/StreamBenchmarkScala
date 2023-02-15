@@ -66,7 +66,7 @@ object SparkFraudDetection
     val lines = new FileParserSpout(inputFile, ssc).parseDataSet(",")
 
     //2nd stage
-    val outlierLines = new FraudPredictor().execute(lines, ssc)
+    val outlierLines = new FraudPredictor().execute(lines, ssc, predModel)
 
     //3rd stage
     // sampling should be cmd argument
