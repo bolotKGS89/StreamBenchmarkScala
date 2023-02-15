@@ -1,0 +1,25 @@
+[debug] > Exec(;set _root_.scala.collection.Seq(historyPath := None,shellPrompt := { _ => "" },SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile") in _root_.sbt.Global := _root_.scala.Some(_root_.sbt.file("/tmp/sbt-structure.xml")),SettingKey[_root_.java.lang.String]("sbtStructureOptions") in _root_.sbt.Global := "download, resolveClassifiers");apply -cp "/home/bolot/.local/share/JetBrains/IdeaIC2022.3/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.0/2022.3.1/sbt-structure-extractor-2022.3.1.jar" org.jetbrains.sbt.CreateTasks;preferScala2;*/*:dumpStructure, Some(ec32b142-1d31-45b3-9da0-f0bdaca6c88f), Some(CommandSource(console0)))
+[debug] > Exec(set _root_.scala.collection.Seq(historyPath := None,shellPrompt := { _ => "" },SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile") in _root_.sbt.Global := _root_.scala.Some(_root_.sbt.file("/tmp/sbt-structure.xml")),SettingKey[_root_.java.lang.String]("sbtStructureOptions") in _root_.sbt.Global := "download, resolveClassifiers"), None, Some(CommandSource(console0)))
+[info] Defining Global / sbtStructureOptions, Global / sbtStructureOutputFile and 1 others.
+[info] The new values will be used by cleanKeepGlobs
+[info] 	Run `last` for details.
+[debug] Defining 
+[debug] 	Global / sbtStructureOptions
+[debug] 	Global / sbtStructureOutputFile
+[debug] 	history
+[debug] 	shellPrompt
+[debug] 
+[debug] The new values will be used by 
+[debug] 	cleanKeepGlobs
+[info] Reapplying settings...
+[info] set current project to SpikeDetectionScala (in build file:/home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/)
+[debug] > Exec(apply -cp "/home/bolot/.local/share/JetBrains/IdeaIC2022.3/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.0/2022.3.1/sbt-structure-extractor-2022.3.1.jar" org.jetbrains.sbt.CreateTasks, None, Some(CommandSource(console0)))
+[info] Applying State transformations org.jetbrains.sbt.CreateTasks from /home/bolot/.local/share/JetBrains/IdeaIC2022.3/Scala/repo/org/jetbrains/scala/sbt-structure-extractor_2.12_1.0/2022.3.1/sbt-structure-extractor-2022.3.1.jar
+[info] Reapplying settings...
+[info] set current project to SpikeDetectionScala (in build file:/home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/)
+[debug] > Exec(preferScala2, None, Some(CommandSource(console0)))
+[debug] > Exec(*/*:dumpStructure, None, Some(CommandSource(console0)))
+[debug] Evaluating tasks: Global / dumpStructure
+[warn] sbt 0.13 shell syntax is deprecated; use slash syntax instead: Global / dumpStructure
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[warn] spark-core_2.13-3.2.2.jar no longer exists at /home/bolot/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/spark/spark-core_2.13/3.2.2/spark-core_2.13-3.2.2.jar

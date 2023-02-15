@@ -22,10 +22,10 @@ class MetricsCollector extends java.io.Serializable {
       // set the starting time
       if (generated == 1)
         epoch = System.nanoTime
-      data
   }
 
-  def nullifyValues(): Unit = {
+
+  private def nullifyValues(): Unit = {
     timestamp = 0L
     bytes = 0
     index = 0
@@ -37,11 +37,12 @@ class MetricsCollector extends java.io.Serializable {
   }
 
   def measureThroughput(): Unit = {
+    val rate = generated / ((lastTupleTs - epoch) / 1e9) // per second
     val tElapsed = (lastTupleTs - epoch) / 1e6
     val mbs = (bytes / 1048576).toDouble / (tElapsed / 1000).toDouble
     formatted_mbs = String.format("%.5f", mbs)
-    Log.log.warn(s"Measured throughput: ${formatted_mbs} MB/second")
-//    this.nullifyValues()
+    Log.log.warn(s"Measured throughput: ${rate} lines/second, ${formatted_mbs} MB/second")
+    this.nullifyValues()
   }
 
 }

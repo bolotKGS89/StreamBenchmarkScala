@@ -1,0 +1,29 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/spikedetectionscala_2.13-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WordCount[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/WordCount[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WordCount/Counter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/WordCount/Counter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WordCount/Splitter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/WordCount/Splitter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WordCount/FileParserSource.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/WordCount/FileParserSource.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WordCount/SparkWordCount$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/WordCount/SparkWordCount$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WordCount/SparkWordCount.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/WordCount/SparkWordCount.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	log4j.properties[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/log4j.properties[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Util[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/Util[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Util/Sampler.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/Util/Sampler.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Util/Log.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/Util/Log.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Util/MetricsCollector.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/Util/MetricsCollector.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Util/Sampler$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/Util/Sampler$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Util/Log$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes/Util/Log$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

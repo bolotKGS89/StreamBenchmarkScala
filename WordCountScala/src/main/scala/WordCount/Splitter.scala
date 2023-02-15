@@ -2,21 +2,23 @@ package WordCount
 
 import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.dstream.DStream
-import Util.MetricsCollector
+import Util.{Log, MetricsCollector}
 
-class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext) {
+class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext, parDegree: Int) {
 
     def execute(): DStream[(String, Int, Long)] ={
         var lineCount: Long = 0
         var wordCount: Long = 0
         var timestamp: Long = 0L
 
+        val counter = ssc.sparkContext.longAccumulator("Splitter accumulator")
+
         lines.transform({ rdd =>
-          val counter = ssc.sparkContext.collectionAccumulator[String]
-          val metrics = new MetricsCollector
-          val words = rdd.filter((data) => !data._1.isEmpty)
+          val startTime = System.nanoTime()
+
+          val words = rdd.repartition(parDegree).filter((data) => !data._1.isEmpty)
           .flatMap((data) => {
-            metrics.collectMetrics(data._1, counter)
+            counter.add(data._1.getBytes.length)
             lineCount += 1
             val words = data._1.split(" ")
             timestamp = data._2
@@ -26,18 +28,17 @@ class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext) {
             (word, 1)
           }).reduceByKey(_ + _).map((wordTuple) => (wordTuple._1, wordTuple._2, timestamp))
 
+          val endTime = System.nanoTime()
+          val latency = endTime - startTime // Measure the time it took to process the data
+          Log.log.warn(s"[Splitter] latency: $latency")
+
+          val elapsedTime = (endTime - startTime) / 1000000000.0
+          val mbs: Double = (counter.sum / elapsedTime).toDouble
+          val formattedMbs = String.format("%.5f", mbs)
+          Log.log.warn(s"[Splitter] bandwidth: $formattedMbs MB/s")
+
           words
-        })
+        }).persist()
 
     }
 }
-
-//          Log.log.warn(s"Measured throughput: ${formatted_mbs} MB/second")
-
-//          Log.log.info("[Splitter] execution time: " + tElapsed + " ms, " +
-//                 "processed: " + lineCount + " (lines) "
-//                               + wordCount + " (words) "
-//                               + (bytes / 1048576) + " (MB), " +
-//                 "bandwidth: " + wordCount / (tElapsed / 1000) + " (words/s) "
-//                               + formatted_mbs + " (MB/s) "
-//                               + bytes / (tElapsed / 1000) + " (bytes/s)");
