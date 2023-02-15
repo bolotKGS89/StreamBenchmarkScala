@@ -4,59 +4,35 @@ import Util.Log
 import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.dstream.DStream
 
-import java.io
 import java.io.FileNotFoundException
-import scala.collection.mutable.ListBuffer
 
 class FileParserSpout(path: String, ssc: StreamingContext) {
 
   def parseDataSet(splitRegex: String): DStream[(String, String, Long)] = {
-    lazy val records = new ListBuffer[String]
-    lazy val entities = new ListBuffer[String]
-    var index = 0
-    var generated = 0
-    var lastTupleTs: Long = 0L
-    var rate = 1
-    var ntExecution = 0
-    var epoch: Long = 0
+
     try {
+      val counter = ssc.sparkContext.longAccumulator("Splitter accumulator")
+
       ssc.textFileStream(path).transform({ rdd =>
-        rdd.map(line => {
+        val startTime = System.nanoTime()
+        val res = rdd.map(line => {
           val splitLines = line.split(splitRegex, 2)
-          entities.addOne(splitLines(0))
-          records.addOne(splitLines(1))
-          splitLines })
-          .map((data) => {
+          counter.add(line.getBytes.length)
           val timestamp = System.nanoTime
-          val finalTup = (entities(index), records(index), timestamp)
-          index += 1
-          generated += 1
-          lastTupleTs = timestamp
-          if (rate != 0) { // not full speed
-            val delay_nsec = ((1.0d / rate) * 1e9).toLong
-//            activeDelay(delay_nsec)
-            val t_start = System.nanoTime
-            var t_now = 0L
-            var end = false
-            while (!end) {
-              t_now = System.nanoTime
-              end = (t_now - t_start) >= delay_nsec
-            }
-          }
-          // check the dataset boundaries// check the dataset boundaries
-          if (index >= entities.size) {
-            index = 0
-            ntExecution += 1
-          }
-          // set the starting time// set the starting time
-          if (generated == 1) {
-            epoch = System.nanoTime
-          }
-
-          finalTup
+          (splitLines(0), splitLines(1), timestamp)
         })
-      })
 
+        val endTime = System.nanoTime()
+        val latency = endTime - startTime // Measure the time it took to process the data
+        Log.log.warn(s"[Source] latency: $latency")
+
+        val elapsedTime = (endTime - startTime) / 1000000000.0
+        val mbs: Double = (counter.sum / elapsedTime).toDouble
+        val formattedMbs = String.format("%.5f", mbs)
+        Log.log.warn(s"[Source] bandwidth: $formattedMbs MB/s")
+
+        res
+      })
 
     } catch {
       case _: FileNotFoundException | _: NullPointerException => {

@@ -31,7 +31,7 @@ package Constants
  */
 object FraudDetectionConstants extends BaseConstants {
   val DEFAULT_MODEL = "frauddetection/model.txt"
-  val DEFAULT_PROPERTIES = "/frauddetection/fd.properties"
+  val DEFAULT_PROPERTIES = "/fd.properties"
   val DEFAULT_TOPO_NAME = "FraudDetection"
 
   object Conf {
