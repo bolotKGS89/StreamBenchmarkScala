@@ -5,11 +5,11 @@ import org.apache.spark.streaming.dstream.DStream
 
 class ConsoleSink(samplingRate: Long) {
 
-    def print(filteredTuples: DStream[(String, Double, String, Long)]): DStream[(String, Double, String, Long)] = {
+    def print(filteredTuples: DStream[(String, Double, String, Long)], sinkParDeg: Int): DStream[(String, Double, String, Long)] = {
 
       filteredTuples.transform({ rdd =>
         val startTime = System.nanoTime()
-        val res = rdd.map((tuple) => {
+        val res = rdd.repartition(sinkParDeg).map((tuple) => {
           val entityId: String = tuple._1
           val score = tuple._2
           val states = tuple._3

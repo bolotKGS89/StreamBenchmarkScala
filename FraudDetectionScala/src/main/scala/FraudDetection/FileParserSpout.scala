@@ -8,14 +8,14 @@ import java.io.FileNotFoundException
 
 class FileParserSpout(path: String, ssc: StreamingContext) {
 
-  def parseDataSet(splitRegex: String): DStream[(String, String, Long)] = {
+  def parseDataSet(splitRegex: String, sourceParDeg: Int): DStream[(String, String, Long)] = {
 
     try {
       val counter = ssc.sparkContext.longAccumulator("Splitter accumulator")
 
       ssc.textFileStream(path).transform({ rdd =>
         val startTime = System.nanoTime()
-        val res = rdd.map(line => {
+        val res = rdd.repartition(sourceParDeg).map(line => {
           val splitLines = line.split(splitRegex, 2)
           counter.add(line.getBytes.length)
           val timestamp = System.nanoTime

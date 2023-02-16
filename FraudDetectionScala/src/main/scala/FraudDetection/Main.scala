@@ -14,8 +14,7 @@ object SparkFraudDetection
     var genRate = -1
     var sampling = 1
     var sourceParDeg = 1
-    var splitterParDeg = 1
-    var counterParDeg = 1
+    var predictorParDeg = 1
     var sinkParDeg = 1
 
     if (args.length == 9) {
@@ -34,9 +33,8 @@ object SparkFraudDetection
       if (!(args(4) == "--parallelism")) isCorrect = false
       else try {
         sourceParDeg = args(5).toInt
-        splitterParDeg = args(6).toInt
-        counterParDeg = args(7).toInt
-        sinkParDeg = args(8).toInt
+        predictorParDeg = args(6).toInt
+        sinkParDeg = args(7).toInt
       } catch {
         case e: NumberFormatException =>
           isCorrect = false
@@ -63,14 +61,14 @@ object SparkFraudDetection
     val ssc = new StreamingContext(sparkConf, Seconds(5))
 
     //1st stage
-    val lines = new FileParserSpout(inputFile, ssc).parseDataSet(",")
+    val lines = new FileParserSpout(inputFile, ssc).parseDataSet(",", sourceParDeg)
 
     //2nd stage
-    val outlierLines = new FraudPredictor().execute(lines, ssc, predModel)
+    val outlierLines = new FraudPredictor().execute(lines, ssc, predModel, predictorParDeg)
 
     //3rd stage
     // sampling should be cmd argument
-    val output = new ConsoleSink(100L).print(outlierLines)
+    val output = new ConsoleSink(sampling).print(outlierLines, sinkParDeg)
     output.print(100)
 
     ssc.start()

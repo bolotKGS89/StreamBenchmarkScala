@@ -10,13 +10,13 @@ class FraudPredictor extends Serializable {
 
   private var predictor: ModelBasedPredictor = null;
 
-  def execute(lines: DStream[(String, String, Long)], ssc: StreamingContext, predModel: String): DStream[(String, Double, String, Long)] = {
+  def execute(lines: DStream[(String, String, Long)], ssc: StreamingContext, predModel: String, predictorParDeg: Int): DStream[(String, Double, String, Long)] = {
 
     val counter = ssc.sparkContext.longAccumulator("Predictor accumulator")
 
     lines.transform({ rdd =>
       val startTime = System.nanoTime()
-      val lines = rdd.map((lines) => {
+      val lines = rdd.repartition(predictorParDeg).map((lines) => {
         val entityId = lines._1
         val record = lines._2
         val timestamp = lines._3
