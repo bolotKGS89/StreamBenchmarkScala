@@ -5,17 +5,17 @@ import org.apache.spark.streaming.dstream.DStream
 
 import java.util
 
-class MovingAverage extends Serializable {
+class MovingAverage() extends Serializable {
 
   private var processed = 0
   private var tStart = 0L
   private var tEnd = 0L
 
-  def execute(tuples: DStream[(String, Double, Long)]): DStream[(String, Double, Double, Long)] = {
+  def execute(tuples: DStream[(String, Double, Long)], mvgAvgParDeg: Int): DStream[(String, Double, Double, Long)] = {
 
     tuples.transform({ rdd =>
       val startTime = System.nanoTime()
-      val res = rdd.map((tuple) => {
+      val res = rdd.repartition(mvgAvgParDeg).map((tuple) => {
         val deviceId = tuple._1
         val nextPropertyValue = tuple._2.toDouble
         val timestamp = tuple._3

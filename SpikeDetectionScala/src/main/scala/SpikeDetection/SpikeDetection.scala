@@ -7,12 +7,12 @@ class SpikeDetection extends Serializable {
   private var spikes = 0
   private var processed = 0
   private val spikeThreshold = 0.01d
-  def execute(tuples: DStream[(String, Double, Double, Long)]): DStream[(String, Double, Double, Long)] = {
+  def execute(tuples: DStream[(String, Double, Double, Long)], counterParDeg: Int): DStream[(String, Double, Double, Long)] = {
 
     tuples.transform({ rdd =>
       val startTime = System.nanoTime()
 
-      val ans = rdd.filter((tuple) => {
+      val ans = rdd.repartition(counterParDeg).filter((tuple) => {
         val deviceId: String = tuple._1
         val movingAvgInstant = tuple._2
         val nextPropertyValue = tuple._3
@@ -36,7 +36,7 @@ class SpikeDetection extends Serializable {
       val endTime = System.nanoTime
       val latency = endTime - startTime // Measure the time it took to process the data
       Log.log.warn(s"[SpikeDetection] latency: $latency")
-
+      // bandwidth
 
       ans
     })

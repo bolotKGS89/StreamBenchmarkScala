@@ -7,13 +7,13 @@ class ConsoleSink(samplingRate: Long) {
   private var tStart = 0L
   private var tEnd = 0L
 
-  def print(filteredTuples: DStream[(String, Double, Double, Long)]): DStream[(String, Double, Double, Long)] = {
+  def print(filteredTuples: DStream[(String, Double, Double, Long)], sinkParDeg: Int): DStream[(String, Double, Double, Long)] = {
     tStart = System.nanoTime
     val latency = Sampler(samplingRate)
     var processed = 0
 
     filteredTuples.transform({ rdd =>
-        val res = rdd.map((tuple) => {
+        val res = rdd.repartition(sinkParDeg).map((tuple) => {
           val deviceId: String = tuple._1
           val movingAvgInstant = tuple._2
           val nextPropertyValue = tuple._3

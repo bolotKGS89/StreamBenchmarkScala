@@ -6,133 +6,127 @@
   <component name="ChangeListManager">
     <list default="true" id="8fb8703b-b278-4807-b5af-978de5e4f74e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/StreamBenchmarkScala.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/StreamBenchmarkScala.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/.bsp/sbt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/SpikeDetectionScala-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/SpikeDetectionScala-build.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/SpikeDetectionScala.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/SpikeDetectionScala.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/.bsp/sbt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/.idea/modules/FraudDetectionScala-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/.idea/modules/FraudDetectionScala-build.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/.idea/modules/FraudDetectionScala.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/.idea/modules/FraudDetectionScala.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$0d16a9ed14626e5ac371$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$0d16a9ed14626e5ac371.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$0d16a9ed14626e5ac371.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$2000bda68d6383488a1b$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$2000bda68d6383488a1b.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$2000bda68d6383488a1b.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$30af75ecacef1ce7eac0$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$30af75ecacef1ce7eac0.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$30af75ecacef1ce7eac0.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$3fce85913b57ffdceb57$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$3fce85913b57ffdceb57.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$3fce85913b57ffdceb57.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$75be804b33e56a61e9c6$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$75be804b33e56a61e9c6.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/config-classes/$75be804b33e56a61e9c6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/_global/update/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/_global/update/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/_global/_global/compileOutputs/previous" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/_global/_global/compileOutputs/previous" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/dependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/exportedProducts/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/incOptions/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/incOptions/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/dependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/exportedProducts/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/fullClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/fullClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/project/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/src/main/scala/FraudDetection/ConsoleSink.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/src/main/scala/FraudDetection/ConsoleSink.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/src/main/scala/FraudDetection/FileParserSpout.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/src/main/scala/FraudDetection/FileParserSpout.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/src/main/scala/FraudDetection/FraudPredictor.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/src/main/scala/FraudDetection/FraudPredictor.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/src/main/scala/FraudDetection/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/src/main/scala/FraudDetection/Main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/target/streams/_global/_global/csrLogger/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/target/streams/_global/_global/csrLogger/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/target/streams/_global/update/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/target/streams/_global/update/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FraudDetectionScala/target/streams/_global/updateClassifiers/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../FraudDetectionScala/target/streams/_global/updateClassifiers/_global/streams/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$17faaf5082922a77bbda$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$17faaf5082922a77bbda.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$17faaf5082922a77bbda.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$4780d18e9ad5719c6a97$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$4780d18e9ad5719c6a97.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$4780d18e9ad5719c6a97.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$48d3010668172e146c09$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$48d3010668172e146c09.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$48d3010668172e146c09.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$9b7cb04451e8248b1acb$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$9b7cb04451e8248b1acb.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$9b7cb04451e8248b1acb.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$9bc5e1b6d4cb2d735642$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$9bc5e1b6d4cb2d735642.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$9bc5e1b6d4cb2d735642.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/_global/_global/compileOutputs/previous" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/_global/_global/compileOutputs/previous" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$14e59794ba2f21cc5290$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$14e59794ba2f21cc5290.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$14e59794ba2f21cc5290.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$69225ce8fe8b9dc10a20$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$69225ce8fe8b9dc10a20.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$69225ce8fe8b9dc10a20.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$af192156b298c24c7915$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$af192156b298c24c7915.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$af192156b298c24c7915.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$c5c1c6944af5a0bf3941$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$c5c1c6944af5a0bf3941.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$c5c1c6944af5a0bf3941.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$d70950fd974007aecee7$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$d70950fd974007aecee7.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$d70950fd974007aecee7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/inputs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/input_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/input_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/update/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/_global/update/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/copyResources/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/copyResources/_global/streams/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/compile/incOptions/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/incOptions/_global/streams/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sd.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sd.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/SpikeDetection/ConsoleSink.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/SpikeDetection/ConsoleSink.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/SpikeDetection/FileParserSource.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/SpikeDetection/FileParserSource.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/SpikeDetection/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/SpikeDetection/Main.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/SpikeDetection/MovingAverage.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/SpikeDetection/MovingAverage.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/SpikeDetection/SpikeDetection.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/SpikeDetection/SpikeDetection.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Constants/BaseConstants$BaseField$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Constants/BaseConstants$BaseField$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Constants/SpikeDetectionConstants$Conf$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Constants/SpikeDetectionConstants$Conf$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Constants/SpikeDetectionConstants$DatasetParsing$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Constants/SpikeDetectionConstants$DatasetParsing$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Constants/SpikeDetectionConstants$Field$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Constants/SpikeDetectionConstants$Field$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/ConsoleSink.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/ConsoleSink.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/FileParserSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/FileParserSource.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/MovingAverage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/MovingAverage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/SparkSpikeDetection$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/SparkSpikeDetection$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/SpikeDetection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/SpikeDetection/SpikeDetection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Util/Log$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Util/Log$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Util/Metric.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Util/Metric.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Util/MetricGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Util/MetricGroup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Util/MetricsCollector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Util/MetricsCollector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Util/Sampler$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Util/Sampler$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Util/Sampler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Util/Sampler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Util/config/Configuration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Util/config/Configuration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/Util/data/DataTypeUtils$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/Util/data/DataTypeUtils$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/update/update_cache_2.13/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/update/update_cache_2.13/inputs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/update/update_cache_2.13/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/update/update_cache_2.13/output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/_global/csrLogger/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/_global/csrLogger/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/input_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/input_dsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/inputs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/output" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/target/streams/test/managedClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/.bsp/sbt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/.idea/modules/SpikeDetectionScala-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/.idea/modules/SpikeDetectionScala-build.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/.idea/modules/SpikeDetectionScala.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/.idea/modules/SpikeDetectionScala.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/.idea/scala_compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.13/classes/sd.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/classes/sd.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/.bsp/sbt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/.idea/modules/TrafficMonitoringScala-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/.idea/modules/TrafficMonitoringScala-build.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/.idea/modules/TrafficMonitoringScala.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/.idea/modules/TrafficMonitoringScala.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$4bf44a39d88e03241e9c$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$4bf44a39d88e03241e9c.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$4bf44a39d88e03241e9c.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$53a125b274caacf35f33$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$53a125b274caacf35f33.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$53a125b274caacf35f33.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$5cdd21076fbebd014c25$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$5cdd21076fbebd014c25.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$5cdd21076fbebd014c25.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$f337e2783199e3fb3ddd$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$f337e2783199e3fb3ddd.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$f337e2783199e3fb3ddd.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$fbd4283d9d4a0a01da8f$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$fbd4283d9d4a0a01da8f.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/config-classes/$fbd4283d9d4a0a01da8f.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/_global/update/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/_global/update/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/_global/_global/compileOutputs/previous" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/_global/_global/compileOutputs/previous" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/dependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/exportedProducts/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/incOptions/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/incOptions/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/dependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/exportedProducts/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/fullClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/fullClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/project/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/target/scala-2.13/update/update_cache_2.13/output" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/target/scala-2.13/update/update_cache_2.13/output" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrafficMonitoringScala/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/output" beforeDir="false" afterPath="$PROJECT_DIR$/../TrafficMonitoringScala/target/streams/_global/updateClassifiers/_global/streams/update_cache_2.13/output" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../WordCountScala/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/project/target/config-classes/$759345211d33807bdac8$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/project/target/config-classes/$759345211d33807bdac8.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/project/target/config-classes/$759345211d33807bdac8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$3d9a5453c4dbb6d96a1d$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$3d9a5453c4dbb6d96a1d.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$3d9a5453c4dbb6d96a1d.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$7a1482426c2de649bf1b$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$7a1482426c2de649bf1b.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$7a1482426c2de649bf1b.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$d2cbe05065a89297ea8a$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$d2cbe05065a89297ea8a.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$d2cbe05065a89297ea8a.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$de628e10dfb9e968311b$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$de628e10dfb9e968311b.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$de628e10dfb9e968311b.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$e1bf8558493d1a9a6301$.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$e1bf8558493d1a9a6301.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/config-classes/$e1bf8558493d1a9a6301.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/inputs" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/inputs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/_global/_global/csrLogger/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/_global/_global/csrLogger/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/input_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/input_dsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/_global/update/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/_global/update/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/_global/_global/compileOutputs/previous" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/_global/_global/compileOutputs/previous" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/compileIncremental/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/compileIncremental/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/copyResources/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/copyResources/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/dependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/exportedProducts/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/incOptions/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/incOptions/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/compile/managedClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/dependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/exportedProducts/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/fullClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/fullClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/project/target/streams/runtime/managedClasspath/_global/streams/export" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/src/main/scala/Util/MetricsCollector.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/src/main/scala/Util/MetricsCollector.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/src/main/scala/WordCount/Counter.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/src/main/scala/WordCount/Counter.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/src/main/scala/WordCount/FileParserSource.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/src/main/scala/WordCount/FileParserSource.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/src/main/scala/WordCount/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/src/main/scala/WordCount/Main.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/src/main/scala/WordCount/Splitter.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/src/main/scala/WordCount/Splitter.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/.history3" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/.history3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/Util/MetricsCollector.class" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/Util/MetricsCollector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/WordCount/Counter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/WordCount/Counter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/WordCount/FileParserSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/WordCount/FileParserSource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/WordCount/SparkWordCount$.class" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/WordCount/SparkWordCount$.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/WordCount/Splitter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/scala-2.13/classes/WordCount/Splitter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/streams/_global/_global/csrLogger/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/streams/_global/_global/csrLogger/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/streams/_global/_global/dumpStructure/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/streams/_global/_global/dumpStructure/_global/streams/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.13/output_dsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WordCountScala/target/streams/_global/updateClassifiers/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/target/streams/_global/updateClassifiers/_global/streams/out" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,8 +216,21 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="SpikeDetection.SparkSpikeDetection" />
       <module name="SpikeDetectionScala" />
-      <option name="PROGRAM_PARAMETERS" value="hdfs://127.0.0.1:9000/ dfsdf temp" />
-      <option name="VM_PARAMETERS" value="--add-exports java.base/sun.nio.ch=ALL-UNNAMED" />
+      <option name="PROGRAM_PARAMETERS" value="--rate 0 --sampling 100 --parallelism 1 1 1 1" />
+      <option name="VM_PARAMETERS" value="--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED     --add-opens=java.base/java.lang.reflect=ALL-UNNAMED     --add-opens=java.base/java.io=ALL-UNNAMED    --add-opens=java.base/java.net=ALL-UNNAMED     --add-opens=java.base/java.nio=ALL-UNNAMED    --add-opens=java.base/java.util=ALL-UNNAMED    --add-opens=java.base/java.util.concurrent=ALL-UNNAMED     --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED    --add-opens=java.base/sun.nio.ch=ALL-UNNAMED    --add-opens=java.base/sun.nio.cs=ALL-UNNAMED    --add-opens=java.base/sun.security.action=ALL-UNNAMED  --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SpikeDetectionScala-build" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SpikeDetectionScala-build" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

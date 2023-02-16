@@ -9,23 +9,23 @@ import org.apache.spark.streaming.dstream.DStream
 import scala.collection.mutable.ListBuffer
 import java.io.FileNotFoundException
 
-class FileParserSource(path: String, ssc: StreamingContext)  {
+class FileParserSource() extends Serializable{
 
-  def parseDataSet(valueField: String): DStream[(String, Double, Long)] = {
+  def parseDataSet(path: String, ssc: StreamingContext, sourceParDeg: Int, valueField: String): DStream[(String, Double, Long)] = {
     lazy val fieldList: Map[String, Integer] = Map(
       "temp" -> DatasetParsing.TempField,
       "humid" -> DatasetParsing.HumidField,
       "light" -> DatasetParsing.LightField,
       "volt" -> DatasetParsing.VoltField
     )
-    lazy val valueFieldKey = fieldList.get(valueField).get
+    val valueFieldKey = fieldList.get(valueField).get
     val counter = ssc.sparkContext.longAccumulator
 
     try {
       ssc.textFileStream(path).transform({ rdd =>
         val startTime = System.nanoTime()
 
-        val words = rdd.flatMap((line) => line.split("\n")).filter((line) => !line.isEmpty)
+        val words = rdd.repartition(sourceParDeg).flatMap((line) => line.split("\n")).filter((line) => !line.isEmpty)
           .map(word => word.split("\\s+")).filter((splitWords) => splitWords.length == 8)
             .map((splitWords) => {
             Log.log.debug("[Source] tuple: deviceID " + splitWords(DatasetParsing.DeviceIdField) +
@@ -76,12 +76,3 @@ class FileParserSource(path: String, ssc: StreamingContext)  {
   }
 
 }
-
-//            (splitWords(DatasetParsing.DateField),
-//            splitWords(DatasetParsing.TimeField),
-//            splitWords(DatasetParsing.EpochField),
-//            splitWords(DatasetParsing.DeviceIdField),
-//            splitWords(DatasetParsing.TempField),
-//            splitWords(DatasetParsing.HumidField),
-//            splitWords(DatasetParsing.LightField),
-//            splitWords(DatasetParsing.VoltField))
