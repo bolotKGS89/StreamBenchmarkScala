@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6acff477-b5fa-44e8-b79b-8a47eeda6900" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../YSBScala" beforeDir="false" afterPath="$PROJECT_DIR$/../YSBScala" afterDir="false" />
-    </list>
+    <list default="true" id="6acff477-b5fa-44e8-b79b-8a47eeda6900" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +89,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala",
+    "last_opened_file_path": "/home/bolot/Documents/Thesis/StreamBenchmarkScala/YSBScala",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
