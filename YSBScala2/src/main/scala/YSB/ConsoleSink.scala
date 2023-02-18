@@ -1,5 +1,0 @@
-package YSB
-
-class ConsoleSink {
-
-}
