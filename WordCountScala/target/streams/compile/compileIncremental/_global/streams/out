@@ -1,6 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
-[0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
-[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 10 products, 7 sources, 4 libraries[0m
-[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/src/main/scala/WordCount/Counter.scala, ${BASE}/src/main/scala/WordCount/Main.scala, ${BASE}/src/main/scala/WordCount/Splitter.scala, ${BASE}/src/main/scala/WordCount/FileParserSource.scala, ${BASE}/src/main/scala/Util/Log.scala, ${BASE}/src/main/scala/Util/MetricsCollector.scala, ${BASE}/src/main/scala/Util/Sampler.scala)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())[0m
-[0m[[0m[0mdebug[0m] [0m[0mNo changes[0m

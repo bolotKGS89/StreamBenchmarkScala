@@ -1,9 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0m> Exec({file:/home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/}root/package, None, None)[0m
-[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Compile / package[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
-[0m[[0m[0minfo[0m] [0m[0mcompiling 7 Scala sources to /home/bolot/Documents/Thesis/StreamBenchmarkScala/WordCountScala/target/scala-2.13/classes ...[0m
-[0m[[0m[0minfo[0m] [0m[0mNon-compiled module 'compiler-bridge_2.13' for Scala 2.13.10. Compiling...[0m
-[0m[[0m[0minfo[0m] [0m[0m  Compilation completed in 9.718s.[0m
-[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
-[0m[[0m[32msuccess[0m] [0m[0mTotal time: 16 s, completed Feb 8, 2023, 4:13:07 PM[0m
-[0m[[0m[0mdebug[0m] [0m[0m> Exec(idea-shell, None, None)[0m
