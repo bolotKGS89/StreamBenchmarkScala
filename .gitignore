@@ -18,3 +18,5 @@ TrafficMonitoringScala/project/*
 TrafficMonitoringScala/.bsp
 TrafficMonitoringScala/.idea
 TrafficMonitoringScala/target
+.bsp/
+.idea/
