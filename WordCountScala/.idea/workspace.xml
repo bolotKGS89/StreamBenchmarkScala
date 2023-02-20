@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6acff477-b5fa-44e8-b79b-8a47eeda6900" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../..gitignore.swp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../YSBScala/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../YSBScala/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YSBScala/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/../YSBScala/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YSBScala/src/main/scala/YSB/ConsoleSink.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../YSBScala/src/main/scala/YSB/ConsoleSink.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YSBScala/src/main/scala/YSB/Joiner.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../YSBScala/src/main/scala/YSB/Joiner.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YSBScala/src/main/scala/YSB/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../YSBScala/src/main/scala/YSB/Main.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../YSBScala/src/main/scala/YSB/WinAggregate.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../YSBScala/src/main/scala/YSB/WinAggregate.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
