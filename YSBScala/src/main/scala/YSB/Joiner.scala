@@ -13,7 +13,7 @@ class Joiner {
         stream.transform({ rdd =>
             val startTime = System.nanoTime()
 
-            val res = rdd.repartition(parDegree).filter((campaign) => !campaign._3.equals(null)).map((campaign) => {
+            val res = rdd.filter((campaign) => !campaign._3.equals(null)).repartition(parDegree).map((campaign) => {
                 processed += 1
                 val adId = campaign._3
                 val timestamp = campaign._6

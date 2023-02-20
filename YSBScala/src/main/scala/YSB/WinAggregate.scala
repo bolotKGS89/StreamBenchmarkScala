@@ -13,7 +13,7 @@ class WinAggregate {
       var discarded = 0
       val rddWithWindow = rdd.repartition(parDegree).mapPartitions(iter => {
       val winSet = scala.collection.mutable.Map[String, Window]()
-        iter.map { case (cmp_id, _, ts) => {
+        iter.map({ case (cmp_id, _, ts) => {
           if (winSet.contains(cmp_id)) {
             // get the current window of key cmp_id
             var win = winSet(cmp_id)
@@ -41,7 +41,7 @@ class WinAggregate {
             null
           }
         }
-        }.filter(_ != null)
+        }).filter(_ != null)
 
       })
 
