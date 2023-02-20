@@ -6,3 +6,15 @@ YSBScala/project/*
 YSBScala/.bsp
 YSBScala/.idea
 YSBScala/target
+FraudDetectionScala/project/*
+FraudDetectionScala/.bsp
+FraudDetectionScala/.idea
+FraudDetectionScala/target
+SpikeDetectionScala/project/*
+SpikeDetectionScala/.bsp
+SpikeDetectionScala/.idea
+SpikeDetectionScala/target
+TrafficMonitoringScala/project/*
+TrafficMonitoringScala/.bsp
+TrafficMonitoringScala/.idea
+TrafficMonitoringScala/target

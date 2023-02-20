@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2cd6ceb-e030-41db-aea0-a8d0ccd5e71f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../..gitignore.swp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../WordCountScala/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WordCountScala/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
