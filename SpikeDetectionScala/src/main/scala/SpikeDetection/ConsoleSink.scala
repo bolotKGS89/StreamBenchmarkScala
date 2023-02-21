@@ -9,7 +9,7 @@ class ConsoleSink(samplingRate: Long) {
 
   def print(filteredTuples: DStream[(String, Double, Double, Long)], sinkParDeg: Int): DStream[(String, Double, Double, Long)] = {
     tStart = System.nanoTime
-    val latency = Sampler(samplingRate)
+    val latency = new Sampler(samplingRate)
     var processed = 0
 
     filteredTuples.transform({ rdd =>

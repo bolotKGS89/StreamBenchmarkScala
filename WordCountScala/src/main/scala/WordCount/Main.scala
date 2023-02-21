@@ -1,9 +1,10 @@
 package WordCount
 
-import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import Util.Log
-import java.io.FileInputStream
+import org.apache.spark.SparkConf
+import org.apache.spark.sql.SparkSession
+
 import java.util.Properties
 
 
@@ -56,7 +57,7 @@ object SparkWordCount {
     val resourceStream = getClass.getResourceAsStream("/wc.properties")
     props.load(resourceStream)
 
-    val inputFile = props.getProperty("wc.source.path")
+    val inputDirectory = props.getProperty("wc.source.path")
 
     val sparkConf = new SparkConf()
       .setMaster("local[*]")
@@ -64,7 +65,7 @@ object SparkWordCount {
 
     val ssc = new StreamingContext(sparkConf, Seconds(5))
     //1st stage
-    val lines = new FileParserSource(inputFile, ssc, sourceParDeg).parseDataSet()
+    val lines = new FileParserSource(inputDirectory, ssc, sourceParDeg).parseDataSet()
     //2nd stage
     val words = new Splitter(lines, ssc, splitterParDeg).execute()
     //3rd stage
@@ -74,7 +75,13 @@ object SparkWordCount {
 
     // Should I use MetricGroup and write them in .json
 
-    wordCounts.print(10)
+    wordCounts.foreachRDD(rdd => {
+      // Process each RDD in the DStream
+      rdd.foreach(line => {
+        // Process each line in the RDD
+        println(line)
+      })
+    })
 
     ssc.start()
     ssc.awaitTermination()

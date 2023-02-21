@@ -1,8 +1,10 @@
 package WordCount
 
 import Util.Log
+import org.apache.spark.TaskContext
 import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.dstream.DStream
+import org.apache.spark.executor.TaskMetrics
 
 import java.io.FileNotFoundException
 
@@ -14,18 +16,30 @@ class FileParserSource(path: String, ssc: StreamingContext, parDegree: Int) {
           val counter = ssc.sparkContext.longAccumulator
 
           ssc.textFileStream(path).transform({ rdd =>
-             val startTime = System.nanoTime()
+//            val taskContext = TaskContext.get
+            val startTime = System.nanoTime()
+//             val startMetrics = taskMetrics
 
              val res = rdd.repartition(parDegree).flatMap((line) => {
-               val splitLine = line.split("\n").filter((line) => !line.isEmpty)
-               timestamp = System.nanoTime
-               counter.add(line.getBytes.length)
-               splitLine })
-              .map((line) => (line, timestamp))
+             val splitLine = line.split("\n").filter((line) => !line.isEmpty)
+             timestamp = System.nanoTime
+             counter.add(line.getBytes.length)
+             splitLine })
+            .map((line) => (line, timestamp))
 
              val endTime = System.nanoTime()
+//             val endMetrics = taskMetrics
+//             val latency = taskContext.taskMetrics.executorRunTime
              val latency = endTime - startTime // Measure the time it took to process the data
              Log.log.warn(s"[Source] latency: $latency")
+
+//            val inputBytes = endMetrics.inputMetrics.bytesRead - startMetrics.inputMetrics.bytesRead
+//            val outputBytes = endMetrics.outputMetrics.bytesWritten - startMetrics.outputMetrics.bytesWritten
+//            val numBytes = outputBytes - inputBytes
+//
+//            val duration = (endTime - startTime) / 1000.0
+//            val bandwidth = numBytes / duration
+//            Log.log.warn(s"[Source] bandwidth: $bandwidth MB/s")
 
              val elapsedTime = (endTime - startTime) / 1000000000.0
              val mbs: Double = (counter.sum / elapsedTime).toDouble
@@ -34,6 +48,7 @@ class FileParserSource(path: String, ssc: StreamingContext, parDegree: Int) {
 
              res
         })
+
     } catch {
       case _: FileNotFoundException | _: NullPointerException => {
         Log.log.error(s"The file {} does not exists $path")

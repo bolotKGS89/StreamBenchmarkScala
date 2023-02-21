@@ -1,7 +1,5 @@
 package Util
 
-import java.util
-import java.util.{HashMap, Stack}
 import java.io.IOException
 import scala.collection.mutable
 

@@ -23,6 +23,8 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
           val now = System.nanoTime
           Sampler.add((now - timestamp).toDouble / 1e3, now)
 
+          System.out.println((word, count))
+
           (word, count)
       })
 
