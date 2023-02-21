@@ -17,7 +17,7 @@ object SparkFraudDetection
     var predictorParDeg = 1
     var sinkParDeg = 1
 
-    if (args.length == 9) {
+    if (args.length == 8) {
       if (!(args(0) == "--rate")) isCorrect = false
       else try genRate = args(1).toInt
       catch {
