@@ -15,13 +15,15 @@ import scala.collection.mutable
  *
  */
 class FixedSizeQueue[E](private var capacity: Int) extends mutable.Queue[E] {
-//  private var elements: Array = new Array(capacity)
-//  private var head = 0
-//  private var tail = (head - 1) % capacity;
-//  private var size = 0
-//
+//  private var elements: mutable.Array = new mutable.ArraySeq[capacity]
+//  private var capacity = capacity
+//  private var head: Int = 0
+//  private var tail = (head - 1) % capacity
+//  var size = 0
 //  private var modCount = 0
 //
+//  if (capacity < 0) throw new IllegalArgumentException("Illegal Capacity: " + capacity)
+
 //  override def add(e: E): Boolean = {
 //    modCount += 1
 //    tail = (tail + 1) % capacity

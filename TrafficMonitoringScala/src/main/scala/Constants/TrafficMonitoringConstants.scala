@@ -40,7 +40,7 @@ object TrafficMonitoringConstants extends BaseConstants {
 //  trait Field extends BaseConstants.BaseField {}
 
   // cities supported by the application
-  object City {
+  object City extends Serializable {
     val BEIJING = "beijing"
   }
 

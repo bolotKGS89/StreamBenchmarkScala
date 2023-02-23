@@ -3,7 +3,6 @@ package WordCount
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import Util.Log
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.SparkSession
 
 import java.util.Properties
 
