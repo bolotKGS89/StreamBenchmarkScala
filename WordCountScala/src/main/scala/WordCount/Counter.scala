@@ -7,11 +7,13 @@ import Util.{Log, MetricsCollector, Sampler}
 
 class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, samplingRate: Long, parDegree: Int) {
 
-  Sampler.init(samplingRate)
+//  Sampler.init(samplingRate)
   def count(): DStream[(String, Int)] = {
     val counter = ssc.sparkContext.longAccumulator("Counter accumulator")
     words.transform({ rdd =>
+//            val taskContext = TaskContext.get
       val startTime = System.nanoTime()
+      val sampler = new Sampler(samplingRate)
 
       val res = rdd.repartition(parDegree).map(wordTuple => { // might be wrong use
           val word = wordTuple._1
@@ -21,9 +23,8 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
           counter.add(word.getBytes.length)
 
           val now = System.nanoTime
-          Sampler.add((now - timestamp).toDouble / 1e3, now)
+          sampler.add((now - timestamp).toDouble / 1e3, now)
 
-          System.out.println((word, count))
 
           (word, count)
       })
@@ -36,6 +37,17 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
       val mbs: Double = (counter.sum / elapsedTime).toDouble
       val formattedMbs = String.format("%.5f", mbs)
       Log.log.info(s"[Counter] bandwidth: $formattedMbs MB/s")
+
+      //            val endMetrics = taskMetrics
+      //            val latency = taskContext.taskMetrics.executorRunTime
+      //            val inputBytes = endMetrics.inputMetrics.bytesRead - startMetrics.inputMetrics.bytesRead
+      //            val outputBytes = endMetrics.outputMetrics.bytesWritten - startMetrics.outputMetrics.bytesWritten
+      //            val numBytes = outputBytes - inputBytes
+      //
+      //            val duration = (endTime - startTime) / 1000.0
+      //            val bandwidth = numBytes / duration
+      //            Log.log.warn(s"[Splitter] bandwidth: $bandwidth MB/s")
+
 
       res
     })

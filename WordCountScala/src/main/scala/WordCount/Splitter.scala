@@ -2,7 +2,9 @@ package WordCount
 
 import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.dstream.DStream
-import Util.{Log, MetricsCollector}
+import Util.{Log}
+import org.apache.spark.executor.TaskMetrics
+import org.apache.spark.TaskContext
 
 class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext, parDegree: Int) {
 
@@ -14,7 +16,9 @@ class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext, parDegree:
         val counter = ssc.sparkContext.longAccumulator("Splitter accumulator")
 
         lines.transform({ rdd =>
+//            val taskContext = TaskContext.get
           val startTime = System.nanoTime()
+//             val startMetrics = taskMetrics
 
           val words = rdd.repartition(parDegree).filter((data) => !data._1.isEmpty)
           .flatMap((data) => {
@@ -28,6 +32,16 @@ class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext, parDegree:
             (word, 1)
           }).reduceByKey(_ + _).map((wordTuple) => (wordTuple._1, wordTuple._2, timestamp))
 
+//            val endMetrics = taskMetrics
+//            val latency = taskContext.taskMetrics.executorRunTime
+//            val inputBytes = endMetrics.inputMetrics.bytesRead - startMetrics.inputMetrics.bytesRead
+//            val outputBytes = endMetrics.outputMetrics.bytesWritten - startMetrics.outputMetrics.bytesWritten
+//            val numBytes = outputBytes - inputBytes
+//
+//            val duration = (endTime - startTime) / 1000.0
+//            val bandwidth = numBytes / duration
+//            Log.log.warn(s"[Splitter] bandwidth: $bandwidth MB/s")
+
           val endTime = System.nanoTime()
           val latency = endTime - startTime // Measure the time it took to process the data
           Log.log.warn(s"[Splitter] latency: $latency")
@@ -38,7 +52,7 @@ class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext, parDegree:
           Log.log.warn(s"[Splitter] bandwidth: $formattedMbs MB/s")
 
           words
-        }).persist()
+        })
 
     }
 }
