@@ -63,12 +63,12 @@ class MovingAverage() extends Serializable {
       sum += nextDouble
       deviceIDtoSumOfEvents.put(deviceId, sum)
       deviceIDtoStreamMap.put(deviceId, valueList)
-      return sum / valueList.size
+      sum / valueList.size
     }  else {
       valueList.add(nextDouble)
       deviceIDtoStreamMap.put(deviceId, valueList)
       deviceIDtoSumOfEvents.put(deviceId, nextDouble)
-      return nextDouble
+      nextDouble
     }
 
   }

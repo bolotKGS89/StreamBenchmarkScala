@@ -1,11 +1,13 @@
 package MarkovModelPrediction
 
 import Constants.FraudDetectionConstants
+import Constants.FraudDetectionConstants.Conf.LOCAL_PREDICTOR
 import Constants.FraudDetectionConstants.DEFAULT_MODEL
+import Util.Log
 import Util.data.Pair
 
 import java.util
-import java.util.{HashMap, List, Map}
+import java.util.{HashMap, List, Map, Properties}
 
 class MarkovModelPredictor(mmKey: String) extends ModelBasedPredictor {
   private object DetectionAlgorithm extends Enumeration {
@@ -23,6 +25,7 @@ class MarkovModelPredictor(mmKey: String) extends ModelBasedPredictor {
   private var metricThreshold = .0
   private var maxStateProbIndex: Array[Int] = null
   private var entropy: Array[Double] = null
+  private var algorithm: String = null
 
   private var globalParams: java.util.Map[String, Pair[Double, Double]] = new HashMap[String, Pair[Double, Double]]()
   private var model: String = null
@@ -33,21 +36,28 @@ class MarkovModelPredictor(mmKey: String) extends ModelBasedPredictor {
     model = new MarkovModelFileSource().getModel(mmKey)
   }
 
+  val props = new Properties()
+  val resourceStream = getClass.getResourceAsStream("/fd.properties")
+  props.load(resourceStream)
+
+  localPredictor = props.getProperty(FraudDetectionConstants.Conf.LOCAL_PREDICTOR).toBoolean
+
 
   markovModel = new MarkovModel(model)
   this.localPredictor = true
 
-  if (localPredictor) stateSeqWindowSize = 5
+  if (localPredictor) stateSeqWindowSize = props.getProperty(FraudDetectionConstants.Conf.STATE_SEQ_WIN_SIZE).toInt
   else {
     stateSeqWindowSize = 5
     globalParams = new util.HashMap[String, Pair[Double, Double]]
   }
 
   //state value ordinal within record
-  stateOrdinal = 1
+  stateOrdinal = props.getProperty(FraudDetectionConstants.Conf.STATE_ORDINAL).toInt
 
   //detection algoritm
-  val algorithm = "missProbability"
+  algorithm = props.getProperty(FraudDetectionConstants.Conf.DETECTION_ALGO).toString
+  Log.log.debug(s"[predictor] detection algorithm: $algorithm")
 
 
   if (algorithm == "missProbability") detectionAlgorithm = DetectionAlgorithm.MissProbability
@@ -80,14 +90,16 @@ class MarkovModelPredictor(mmKey: String) extends ModelBasedPredictor {
     }
   }
   else { //error
-    val msg = "The detection algorithm '" + algorithm + "' does not exist"
+    val msg = s"The detection algorithm $algorithm does not exist"
+    Log.log.error(msg)
     throw new RuntimeException(msg)
   }
 
 
 
   //metric threshold
-  metricThreshold = 0.96
+  metricThreshold = props.getProperty(FraudDetectionConstants.Conf.METRIC_THRESHOLD).toInt
+  Log.log.debug(s"[predictor] the threshold is: $metricThreshold")
 
 
   override def execute(entityID: String, record: String): Prediction = {
