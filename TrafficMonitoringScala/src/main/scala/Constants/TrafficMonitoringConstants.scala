@@ -1,11 +1,11 @@
 package Constants
 
-object TrafficMonitoringConstants extends BaseConstants {
+object TrafficMonitoringConstants extends BaseConstants  {
   val DEFAULT_PROPERTIES = "/trafficmonitoring/tm.properties"
   val DEFAULT_TOPO_NAME = "TrafficMonitoring"
-  val BEIJING_SHAPEFILE = "../../Datasets/TM/beijing/roads.shp"
+  val BEIJING_SHAPEFILE = "/home/bolot/Documents/Thesis/StreamBenchmarks/Datasets/TM/beijing/roads.shp"
 
-  object Conf {
+  object Conf extends Serializable {
     val RUNTIME = "tm.runtime_sec"
     val BUFFER_SIZE = "tm.buffer_size"
     val POLLING_TIME = "tm.polling_time_ms"
@@ -45,7 +45,7 @@ object TrafficMonitoringConstants extends BaseConstants {
   }
 
   // constants used to parse Beijing taxi traces
-  object BeijingParsing {
+  object BeijingParsing extends Serializable {
     val B_VEHICLE_ID_FIELD = 0 // carID
 
     val B_NID_FIELD = 1

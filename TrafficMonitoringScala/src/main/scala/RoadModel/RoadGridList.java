@@ -1,29 +1,5 @@
-/**************************************************************************************
- *  Copyright (c) 2019- Gabriele Mencagli and Alessandra Fais
- *
- *  This file is part of StreamBenchmarks.
- *
- *  StreamBenchmarks is free software dual licensed under the GNU LGPL or MIT License.
- *  You can redistribute it and/or modify it under the terms of the
- *    * GNU Lesser General Public License as published by
- *      the Free Software Foundation, either version 3 of the License, or
- *      (at your option) any later version
- *    OR
- *    * MIT License: https://github.com/ParaGroup/StreamBenchmarks/blob/master/LICENSE.MIT
- *
- *  StreamBenchmarks is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Lesser General Public License for more details.
- *  You should have received a copy of the GNU Lesser General Public License and
- *  the MIT License along with WindFlow. If not, see <http://www.gnu.org/licenses/>
- *  and <http://opensource.org/licenses/MIT/>.
- **************************************************************************************
- */
-
 package RoadModel;
 
-import Constants.TrafficMonitoringConstants.Conf;
 import Util.config.Configuration;
 import org.geotools.data.FeatureSource;
 import org.geotools.data.shapefile.ShapefileDataStore;
@@ -35,6 +11,7 @@ import org.postgis.MultiLineString;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,7 +24,7 @@ import java.util.Map;
  *
  *  The class defines a data structure containing information about the roads layer extracted from the shapefile.
  */
-public class RoadGridList {
+public class RoadGridList implements Serializable {
     private HashMap<String, ArrayList<SimpleFeature>> gridList = new HashMap<>();
     private String idKey;
     private String widthKey;
@@ -62,8 +39,8 @@ public class RoadGridList {
     public RoadGridList(Configuration config, String path) throws SQLException, IOException {
         gridList = read(path);
 
-        idKey = config.getString(Conf.ROAD_FEATURE_ID_KEY);                  // attribute of the SimpleFeature containing the ID of the road
-        widthKey = config.getString(Conf.ROAD_FEATURE_WIDTH_KEY, null); // width of the cells of the grid into which the map is divided
+        idKey = config.getString("tm.road.feature.id_key");                  // attribute of the SimpleFeature containing the ID of the road
+        widthKey = config.getString("tm.road.feature.width_key", null); // width of the cells of the grid into which the map is divided
     }
 
     /**

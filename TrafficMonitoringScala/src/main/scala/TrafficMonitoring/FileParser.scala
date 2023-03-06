@@ -9,7 +9,7 @@ import java.io.FileNotFoundException
 
 class FileParser(path: String, ssc: StreamingContext, parDegree: Int, city: String) extends Serializable{
 //
-  def parseDataSet(): DStream[(String, Double, Double, Double, Int)] = {
+  def parseDataSet(): DStream[(String, Double, Double, Double, Int, Long)] = {
     var timestamp = 0L
     try {
       val counter = ssc.sparkContext.longAccumulator
@@ -26,18 +26,21 @@ class FileParser(path: String, ssc: StreamingContext, parDegree: Int, city: Stri
           splitLine
         }).filter((splitLine) => splitLine.length >= 7).map((line) => {
 
-            Log.log.debug("[Source] Beijing Fields: {} ; {} ; {} ; {} ; {}",
-              line(BeijingParsing.B_VEHICLE_ID_FIELD),
-              line(BeijingParsing.B_LATITUDE_FIELD),
-              line(BeijingParsing.B_LONGITUDE_FIELD),
-              line(BeijingParsing.B_SPEED_FIELD),
-              line(BeijingParsing.B_DIRECTION_FIELD))
+          Log.log.debug("[Source] Beijing Fields: {} ; {} ; {} ; {} ; {}",
+            line(BeijingParsing.B_VEHICLE_ID_FIELD),
+            line(BeijingParsing.B_LATITUDE_FIELD),
+            line(BeijingParsing.B_LONGITUDE_FIELD),
+            line(BeijingParsing.B_SPEED_FIELD),
+            line(BeijingParsing.B_DIRECTION_FIELD))
+
+          val timestamp = System.nanoTime
 
           (line(BeijingParsing.B_VEHICLE_ID_FIELD),
             line(BeijingParsing.B_LATITUDE_FIELD).toDouble,
             line(BeijingParsing.B_LONGITUDE_FIELD).toDouble,
             line(BeijingParsing.B_SPEED_FIELD).toDouble,
-            line(BeijingParsing.B_DIRECTION_FIELD).toInt)
+            line(BeijingParsing.B_DIRECTION_FIELD).toInt,
+            timestamp)
         })
 
         val endTime = System.nanoTime()

@@ -1,6 +1,6 @@
 package Util.config
 
-class Configuration {
+class Configuration extends Serializable {
   val METRICS_ENABLED = "metrics.enabled"
   val METRICS_REPORTER = "metrics.reporter"
   val METRICS_INTERVAL_VALUE = "metrics.interval.value"

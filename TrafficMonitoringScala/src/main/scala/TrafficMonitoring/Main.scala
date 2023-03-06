@@ -56,7 +56,6 @@ object Main {
     props.load(resourceStream)
 
     val inputDirectory = props.getProperty("tm.spout.beijing")
-//    val city_tracefile = props.getProperty(Conf.SPOUT_BEIJING)
     val city = props.getProperty(City.BEIJING)
 
     val sparkConf = new SparkConf()
@@ -67,10 +66,9 @@ object Main {
 
     val lines = new FileParser(inputDirectory, ssc, sourceParDeg, city).parseDataSet()
 
-    lines.print(100)
+    val mapMatchLines = new MapMatching(lines, sourceParDeg, city).execute()
 
-//    val mapMatch = new MapMatching(lines, sourceParDeg, city).execute()
-
+    mapMatchLines.print(100)
 
     ssc.start()
     ssc.awaitTermination()
