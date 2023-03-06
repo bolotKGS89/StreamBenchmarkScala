@@ -68,7 +68,7 @@ object Main {
 
     val mapMatchLines = new MapMatching(lines, sourceParDeg, city).execute()
 
-    mapMatchLines.print(100)
+    mapMatchLines.print(5)
 
     ssc.start()
     ssc.awaitTermination()

@@ -23,6 +23,7 @@
 
 package RoadModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -31,7 +32,7 @@ import java.util.ArrayList;
  *
  *  The class defines a polygon given a list of points.
  */
-class Polygon {
+class Polygon implements Serializable {
     private static final int EARTH_RADIUS = 6378137;
 
     private ArrayList<Point> points;
@@ -251,7 +252,7 @@ class Polygon {
  *  The class defines a sector as a polygon defined by a list of points
  *  along with an ID and the road width property.
  */
-public class Sector extends Polygon {
+public class Sector extends Polygon implements Serializable {
     private int id;
     private int roadWidth;
     private String mapID;

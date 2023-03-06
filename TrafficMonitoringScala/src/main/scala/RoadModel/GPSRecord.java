@@ -23,13 +23,15 @@
 
 package RoadModel;
 
+import java.io.Serializable;
+
 /**
  *  @author Alessandra Fais
  *  @version June 2019
  *
  *  The class defines a Point data structure containing X and Y coordinates.
  */
-class Point {
+class Point implements Serializable {
     double x;
     double y;
 
@@ -57,7 +59,7 @@ class Point {
  *  The class defines a GPSRecord data structure containing X and Y coordinates,
  *  speed and direction.
  */
-public class GPSRecord extends Point {
+public class GPSRecord extends Point implements Serializable {
     private double speed;
     private int direction;
 

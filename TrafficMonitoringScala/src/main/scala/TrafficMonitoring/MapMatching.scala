@@ -14,7 +14,7 @@ import java.util.HashMap
 
 class MapMatching(lines: DStream[(String, Double, Double, Double, Int, Long)], parDegree: Int, city: String) extends Serializable {
 
-    def execute(): DStream[(Int, Double, Long)] = {
+    def execute(): DStream[(Int, Int, Long)] = {
         val config = new Configuration
         val roads = new util.HashMap[Integer, Integer]
 
@@ -55,18 +55,24 @@ class MapMatching(lines: DStream[(String, Double, Double, Double, Int, Long)], p
                 val roadID = sectors.fetchRoadID(record)
                 if (roadID != 1) true else false
               }}).map({ case (_, latitude, longitude, speed, bearing, timestamp) => {
-                val record = new GPSRecord(longitude, latitude, speed, bearing)
-                val roadID = sectors.fetchRoadID(record)
-                if (roads.containsKey(roadID)) {
-                    val count = roads.get(roadID)
-                    roads.put(roadID, count + 1)
+                try {
+                    val record = new GPSRecord(longitude, latitude, speed, bearing)
+                    val roadID = sectors.fetchRoadID(record)
+                    if (roads.containsKey(roadID)) {
+                        val count = roads.get(roadID)
+                        roads.put(roadID, count + 1)
+                    }
+                    else {
+                        roads.put(roadID, 1)
+                        dif_keys += 1
+                    }
+                    all_keys += 1
+                    (roadID, speed.toInt, timestamp)
+                } catch {
+                    case e: SQLException => {
+                        throw new RuntimeException("Unable to fetch road ID", e)
+                    }
                 }
-                else {
-                    roads.put(roadID, 1)
-                    dif_keys += 1
-                }
-                all_keys += 1
-                (roadID, speed, timestamp)
             }})
 
             val endTime = System.nanoTime()
