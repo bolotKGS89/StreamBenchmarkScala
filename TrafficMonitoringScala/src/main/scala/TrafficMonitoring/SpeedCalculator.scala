@@ -5,7 +5,6 @@ import Util.Log
 import org.apache.spark.streaming.dstream.DStream
 
 import java.util
-import java.util.{HashMap, Map}
 
 class SpeedCalculator(lines: DStream[(Int, Int, Long)], parDegree: Int) extends Serializable {
     def execute(): DStream[(Int, Int, Int, Long)] = {

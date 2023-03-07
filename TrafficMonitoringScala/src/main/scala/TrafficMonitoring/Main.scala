@@ -68,6 +68,8 @@ object Main {
 
     val mapMatchLines = new MapMatching(lines, sourceParDeg, city).execute()
 
+    val consoleLines = new ConsoleSink().execute(mapMatchLines, genRate, sinkParDeg, sampling)
+
     mapMatchLines.print(5)
 
     ssc.start()

@@ -74,13 +74,7 @@ object SparkWordCount {
 
     // Should I use MetricGroup and write them in .json
 
-    wordCounts.foreachRDD(rdd => {
-      // Process each RDD in the DStream
-      rdd.foreach(line => {
-        // Process each line in the RDD
-        println(line)
-      })
-    })
+    wordCounts.print(20)
 
     ssc.start()
     ssc.awaitTermination()
