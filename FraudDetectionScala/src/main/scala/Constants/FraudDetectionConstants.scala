@@ -33,20 +33,21 @@ object FraudDetectionConstants extends BaseConstants {
   val DEFAULT_MODEL = "frauddetection/model.txt"
   val DEFAULT_PROPERTIES = "/fd.properties"
   val DEFAULT_TOPO_NAME = "FraudDetection"
+  val RUNTIME = "fd.runtime_sec"
+  val BUFFER_SIZE = "fd.buffer_size"
+  val POLLING_TIME = "fd.polling_time_ms"
+  val SPOUT_PATH = "fd.spout.path"
+  val PREDICTOR_MODEL = "fd.predictor.model"
+  val MARKOV_MODEL_KEY = "fd.markov.model.key"
+  val LOCAL_PREDICTOR = "fd.local.predictor"
+  val STATE_SEQ_WIN_SIZE = "fd.state.seq.window.size"
+  val STATE_ORDINAL = "fd.state.ordinal"
+  val DETECTION_ALGO = "fd.detection.algorithm"
+  val METRIC_THRESHOLD = "fd.metric.threshold"
 
-  object Conf {
-    val RUNTIME = "fd.runtime_sec"
-    val BUFFER_SIZE = "fd.buffer_size"
-    val POLLING_TIME = "fd.polling_time_ms"
-    val SPOUT_PATH = "fd.spout.path"
-    val PREDICTOR_MODEL = "fd.predictor.model"
-    val MARKOV_MODEL_KEY = "fd.markov.model.key"
-    val LOCAL_PREDICTOR = "fd.local.predictor"
-    val STATE_SEQ_WIN_SIZE = "fd.state.seq.window.size"
-    val STATE_ORDINAL = "fd.state.ordinal"
-    val DETECTION_ALGO = "fd.detection.algorithm"
-    val METRIC_THRESHOLD = "fd.metric.threshold"
-  }
+//  object Conf {
+//
+//  }
 
   object Component {
     val PREDICTOR = "fraud_predictor"
@@ -61,7 +62,4 @@ object FraudDetectionConstants extends BaseConstants {
     val STATES = "states"
   }
 
-//  trait Field extends BaseConstants.BaseField {}
 }
-
-//trait FraudDetectionConstants extends BaseConstants {}

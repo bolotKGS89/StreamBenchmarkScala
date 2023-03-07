@@ -1,5 +1,6 @@
 package FraudDetection
 
+import MarkovModelPrediction.{MarkovModelPredictor, ModelBasedPredictor}
 import org.apache.spark.streaming.dstream.DStream
 import Util.Log
 import org.apache.commons.lang.StringUtils
@@ -19,7 +20,7 @@ class FraudPredictor extends Serializable {
 
         val strategy = predModel
         if (strategy.eq("mm")) {
-          predictor = new MarkovModelPredictor(strategy)
+          predictor = new MarkovModelPredictor()
         }
 
         val p = predictor.execute(entityId, record)
@@ -32,7 +33,7 @@ class FraudPredictor extends Serializable {
         Log.log.debug(s"[Predictor] outlier: entityID $entityId score ${prediction.getScore} states ${prediction.getStates.mkString(",")}")
         counter.add(prediction.getScore.toLong)
 
-        (entityId, prediction.getScore, prediction.getStates, timestamp)
+        (entityId, prediction.getScore, prediction.getStates.mkString(","), timestamp)
       }})
 
       val endTime = System.nanoTime()

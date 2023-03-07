@@ -23,6 +23,7 @@
 
 package MarkovModelPrediction;
 
+import Constants.FraudDetectionConstants;
 import Util.config.Configuration;
 import Util.data.Pair;
 import org.apache.commons.lang.StringUtils;
@@ -34,9 +35,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static Constants.FraudDetectionConstants.*;
-import static Constants.FraudDetectionConstants.Conf.*;
-import static Constants.FraudDetectionConstants.DEFAULT_MODEL;
 
 /**
  * Predictor based on markov model
@@ -62,31 +60,32 @@ public class MarkovModelPredictor extends ModelBasedPredictor {
     private int[] maxStateProbIndex;
     private double[] entropy;
 
-    public MarkovModelPredictor(Configuration conf) {
-        String mmKey = conf.getString(MARKOV_MODEL_KEY, null);
+    public MarkovModelPredictor() {
+        Configuration conf = new Configuration();
+        String mmKey = conf.getString(FraudDetectionConstants.MARKOV_MODEL_KEY(), null);
         String model;
 
         if (StringUtils.isBlank(mmKey)) {
-            model = new MarkovModelResourceSource().getModel(DEFAULT_MODEL);
+            model = new MarkovModelResourceSource().getModel(FraudDetectionConstants.DEFAULT_MODEL());
         } else {
             model = new MarkovModelFileSource().getModel(mmKey);
         }
 
         markovModel = new MarkovModel(model);
-        localPredictor = conf.getBoolean(LOCAL_PREDICTOR);
+        localPredictor = conf.getBoolean(FraudDetectionConstants.LOCAL_PREDICTOR());
 
         if (localPredictor) {
-            stateSeqWindowSize = conf.getInt(STATE_SEQ_WIN_SIZE);
+            stateSeqWindowSize = conf.getInt(FraudDetectionConstants.STATE_SEQ_WIN_SIZE());
         }  else {
             stateSeqWindowSize = 5;
             globalParams = new HashMap<>();
         }
 
         //state value ordinal within record
-        stateOrdinal = conf.getInt(STATE_ORDINAL);
+        stateOrdinal = conf.getInt(FraudDetectionConstants.STATE_ORDINAL());
 
         //detection algoritm
-        String algorithm = conf.getString(DETECTION_ALGO);
+        String algorithm = conf.getString(FraudDetectionConstants.DETECTION_ALGO());
         LOG.debug("[predictor] detection algorithm: " + algorithm);
 
         if (algorithm.equals("missProbability")) {
@@ -127,7 +126,7 @@ public class MarkovModelPredictor extends ModelBasedPredictor {
         }
 
         //metric threshold
-        metricThreshold = conf.getDouble(METRIC_THRESHOLD);
+        metricThreshold = conf.getDouble(FraudDetectionConstants.METRIC_THRESHOLD());
         LOG.debug("[predictor] the threshold is: " + metricThreshold);
     }
 

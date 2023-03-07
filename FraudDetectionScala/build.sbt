@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-streaming" % "3.3.2",
   "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
   "org.apache.logging.log4j" % "log4j-core" % "2.20.0",
-  "org.apache.storm" % "storm-core" % "2.4.0"
+  "org.apache.storm" % "storm-core" % "2.4.0",
+  "org.apache.hadoop" % "hadoop-auth" % "3.3.2"
 )
 
 lazy val root = (project in file("."))
