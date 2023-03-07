@@ -13,8 +13,8 @@ object Main {
       var genRate = -1
       var sampling = 1
       var sourceParDeg = 1
-      var splitterParDeg = 1
-      var counterParDeg = 1
+      var mapMatchParDeg = 1
+      var speedParDeg = 1
       var sinkParDeg = 1
 
       if (args.length == 9) {
@@ -33,8 +33,8 @@ object Main {
         if (!(args(4) == "--parallelism")) isCorrect = false
         else try {
           sourceParDeg = args(5).toInt
-          splitterParDeg = args(6).toInt
-          counterParDeg = args(7).toInt
+          mapMatchParDeg = args(6).toInt
+          speedParDeg = args(7).toInt
           sinkParDeg = args(8).toInt
         } catch {
           case e: NumberFormatException =>
@@ -66,11 +66,13 @@ object Main {
 
     val lines = new FileParser(inputDirectory, ssc, sourceParDeg, city).parseDataSet()
 
-    val mapMatchLines = new MapMatching(lines, sourceParDeg, city).execute()
+    val mapMatchLines = new MapMatching(lines, mapMatchParDeg, city).execute()
 
-    val consoleLines = new ConsoleSink().execute(mapMatchLines, genRate, sinkParDeg, sampling)
+    val speedCalculatorLines = new SpeedCalculator(mapMatchLines, speedParDeg).execute()
 
-    mapMatchLines.print(5)
+    val consoleLines = new ConsoleSink(speedCalculatorLines, genRate, sinkParDeg, sampling).execute()
+
+    consoleLines.print(5)
 
     ssc.start()
     ssc.awaitTermination()

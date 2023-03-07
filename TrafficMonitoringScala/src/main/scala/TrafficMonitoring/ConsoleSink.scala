@@ -3,8 +3,8 @@ package TrafficMonitoring
 import Util.{Log, Sampler}
 import org.apache.spark.streaming.dstream.DStream
 
-class ConsoleSink extends Serializable {
-    def execute(lines: DStream[(Int, Int, Int, Long)], genRate: Int, parallelismDegree: Int, samplingRate: Int): Unit = {
+class ConsoleSink(lines: DStream[(Int, Int, Int, Long)], genRate: Int, parallelismDegree: Int, samplingRate: Int) extends Serializable {
+    def execute(): DStream[(Int, Int, Int, Long)] = {
 
         lines.transform({ rdd =>
             val startTime = System.nanoTime()
@@ -17,6 +17,7 @@ class ConsoleSink extends Serializable {
 
                 sampler.add((now - timestamp).toDouble / 1e3, now)
                 processed += 1
+                (roadID, speed, count, timestamp)
             }})
 
             val endTime = System.nanoTime()
