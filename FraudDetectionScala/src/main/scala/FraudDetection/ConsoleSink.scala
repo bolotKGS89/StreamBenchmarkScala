@@ -9,14 +9,9 @@ class ConsoleSink(samplingRate: Long) {
 
       filteredTuples.transform({ rdd =>
         val startTime = System.nanoTime()
-        val res = rdd.repartition(sinkParDeg).map((tuple) => {
-          val entityId: String = tuple._1
-          val score = tuple._2
-          val states = tuple._3
-          val timestamp = tuple._4
-
+        val res = rdd.repartition(sinkParDeg).map({ case(entityId, score, states, timestamp) => {
           (entityId, score, states, timestamp)
-        })
+        }})
 
         val endTime = System.nanoTime()
         val latency = endTime - startTime // Measure the time it took to process the data

@@ -16,10 +16,7 @@ class FraudPredictor extends Serializable {
 
     lines.transform({ rdd =>
       val startTime = System.nanoTime()
-      val lines = rdd.repartition(predictorParDeg).map((lines) => {
-        val entityId = lines._1
-        val record = lines._2
-        val timestamp = lines._3
+      val lines = rdd.repartition(predictorParDeg).map({ case(entityId, record, timestamp) => {
 
         val strategy = predModel
         if (strategy.eq("mm")) {
@@ -30,7 +27,7 @@ class FraudPredictor extends Serializable {
         Log.log.debug(s"[Predictor] tuple: entityID $entityId record $record ts $timestamp")
 
         (p, entityId, timestamp)
-      }).filter((predTuple) => {
+      }}).filter((predTuple) => {
         val prediction = predTuple._1
         prediction.isOutlier
       }).map((predTuple) => {

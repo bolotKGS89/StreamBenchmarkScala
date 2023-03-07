@@ -12,11 +12,7 @@ class SpikeDetection extends Serializable {
     tuples.transform({ rdd =>
       val startTime = System.nanoTime()
 
-      val ans = rdd.repartition(counterParDeg).filter((tuple) => {
-        val deviceId: String = tuple._1
-        val movingAvgInstant = tuple._2
-        val nextPropertyValue = tuple._3
-        val timestamp = tuple._4
+      val ans = rdd.repartition(counterParDeg).filter({ case(deviceId, movingAvgInstant, nextPropertyValue, timestamp) => {
 
         Log.log.debug("[Detector] tuple: deviceID " + deviceId +
           ", incremental_average " + movingAvgInstant +
@@ -25,14 +21,11 @@ class SpikeDetection extends Serializable {
         processed += 1
 
         Math.abs(nextPropertyValue - movingAvgInstant) > spikeThreshold * movingAvgInstant
-      }).map((tuple) => {
+      }}).map({ case(deviceId, movingAvgInstant, nextPropertyValue, timestamp) => {
         spikes += 1
-        val deviceId: String = tuple._1
-        val movingAvgInstant = tuple._2
-        val nextPropertyValue = tuple._3
-        val timestamp = tuple._4
+
         (deviceId, movingAvgInstant, nextPropertyValue, timestamp)
-      })
+      }})
       val endTime = System.nanoTime
       val latency = endTime - startTime // Measure the time it took to process the data
       Log.log.warn(s"[SpikeDetection] latency: $latency")

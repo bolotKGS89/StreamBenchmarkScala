@@ -13,16 +13,12 @@ class ConsoleSink(samplingRate: Long) {
     var processed = 0
 
     filteredTuples.transform({ rdd =>
-        val res = rdd.repartition(sinkParDeg).map((tuple) => {
-          val deviceId: String = tuple._1
-          val movingAvgInstant = tuple._2
-          val nextPropertyValue = tuple._3
-          val timestamp = tuple._4
+        val res = rdd.repartition(sinkParDeg).map({ case(deviceId, movingAvgInstant, nextPropertyValue, timestamp) => {
           val now = System.nanoTime
           latency.add((now - timestamp).toDouble / 1e3, now)
           processed += 1
           (deviceId, movingAvgInstant, nextPropertyValue, timestamp)
-        })
+        }})
 
         res
 //      val t_elapsed = (tEnd - tStart) / 1000000 // elapsed time in milliseconds

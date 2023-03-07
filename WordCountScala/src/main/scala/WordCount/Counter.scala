@@ -15,19 +15,14 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
       val startTime = System.nanoTime()
       val sampler = new Sampler(samplingRate)
 
-      val res = rdd.repartition(parDegree).map(wordTuple => { // might be wrong use
-          val word = wordTuple._1
-          val count = wordTuple._2
-          val timestamp = wordTuple._3
-
+      val res = rdd.repartition(parDegree).map({ case(word, count, timestamp) => { // might be wrong use
           counter.add(word.getBytes.length)
 
           val now = System.nanoTime
           sampler.add((now - timestamp).toDouble / 1e3, now)
 
-
           (word, count)
-      })
+      }})
 
       val endTime = System.nanoTime()
       val latency = endTime - startTime // Measure the time it took to process the data
