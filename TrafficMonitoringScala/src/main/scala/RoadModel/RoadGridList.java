@@ -1,3 +1,26 @@
+/**************************************************************************************
+ *  Copyright (c) 2019- Gabriele Mencagli and Alessandra Fais
+ *
+ *  This file is part of StreamBenchmarks.
+ *
+ *  StreamBenchmarks is free software dual licensed under the GNU LGPL or MIT License.
+ *  You can redistribute it and/or modify it under the terms of the
+ *    * GNU Lesser General Public License as published by
+ *      the Free Software Foundation, either version 3 of the License, or
+ *      (at your option) any later version
+ *    OR
+ *    * MIT License: https://github.com/ParaGroup/StreamBenchmarks/blob/master/LICENSE.MIT
+ *
+ *  StreamBenchmarks is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Lesser General Public License for more details.
+ *  You should have received a copy of the GNU Lesser General Public License and
+ *  the MIT License along with WindFlow. If not, see <http://www.gnu.org/licenses/>
+ *  and <http://opensource.org/licenses/MIT/>.
+ **************************************************************************************
+ */
+
 package RoadModel;
 
 import Util.config.Configuration;
@@ -11,7 +34,6 @@ import org.postgis.MultiLineString;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.NotSerializableException;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
@@ -26,8 +48,7 @@ import java.util.Map;
  *  The class defines a data structure containing information about the roads layer extracted from the shapefile.
  */
 public class RoadGridList implements Serializable {
-
-    private HashMap<String, ArrayList<SerializableSimpleFeatureImpl>> gridList = new HashMap<String, ArrayList<SerializableSimpleFeatureImpl>>();
+    private transient HashMap<String, ArrayList<SimpleFeature>> gridList = new HashMap<>();
     private String idKey;
     private String widthKey;
 
@@ -51,7 +72,7 @@ public class RoadGridList implements Serializable {
      *  @return road ID corresponding to p in the map described by the shapefile
      *  @throws SQLException
      */
-    public int fetchRoadID(Point p) throws SQLException, NotSerializableException {
+    public int fetchRoadID(Point p) throws SQLException {
         int lastMiniRoadID = -2;
 
         Integer mapID_lon = (int)(p.getX()*10);
@@ -66,7 +87,7 @@ public class RoadGridList implements Serializable {
         // search for a key (coordinates <X, Y>) in the map equals to point p coordinates <p.X, p.Y>;
         // the point will be part of one or more than one road (road IDs are contained in the list
         // associated to the key coordinates
-        for (Map.Entry<String, ArrayList<SerializableSimpleFeatureImpl>> grid : gridList.entrySet()) {
+        for (Map.Entry<String, ArrayList<SimpleFeature>> grid : gridList.entrySet()) {
             gridCount++;
             String s = grid.getKey();
 
@@ -128,7 +149,7 @@ public class RoadGridList implements Serializable {
      *          null otherwise
      */
     private ArrayList<SimpleFeature> getGridByID(String mapID) {
-        for (Map.Entry<String, ArrayList<SerializableSimpleFeatureImpl>> g : gridList.entrySet()) {
+        for (Map.Entry<String, ArrayList<SimpleFeature>> g : gridList.entrySet()) {
             if (g.getKey().equals(mapID)) {
                 return g.getValue();
             }
@@ -142,8 +163,8 @@ public class RoadGridList implements Serializable {
      *  @param mapID coordinates <X, Y>
      *  @return true if an entry associated to the key mapID already exists, false otherwise
      */
-    private Boolean exists(HashMap<String, ArrayList<SerializableSimpleFeatureImpl>> gridList, String mapID) {
-        for (Map.Entry<String, ArrayList<SerializableSimpleFeatureImpl>> g : gridList.entrySet()) {
+    private Boolean exists(HashMap<String, ArrayList<SimpleFeature>> gridList, String mapID) {
+        for (Map.Entry<String, ArrayList<SimpleFeature>> g : gridList.entrySet()) {
             if (g.getKey().equals(mapID)) {
                 return true;
             }
@@ -158,17 +179,22 @@ public class RoadGridList implements Serializable {
      *  @throws IOException
      *  @throws SQLException
      */
-    private HashMap<String, ArrayList<SerializableSimpleFeatureImpl>> read(String path) throws IOException, SQLException {
+    private HashMap<String, ArrayList<SimpleFeature>> read(String path) throws IOException, SQLException {
         File file = new File(path);
+        // System.out.println("File: " + file);
 
         ShapefileDataStore shpDataStore = new ShapefileDataStore(file.toURI().toURL());
         shpDataStore.setCharset(Charset.forName("GBK"));
+        // System.out.println("Shapefile data store: \n" + shpDataStore);
 
         // feature access
         String typeName = shpDataStore.getTypeNames()[0];
         FeatureSource<SimpleFeatureType, SimpleFeature> featureSource = shpDataStore.getFeatureSource(typeName);
         FeatureCollection<SimpleFeatureType, SimpleFeature> result = featureSource.getFeatures();
         FeatureIterator<SimpleFeature> iterator = result.features();
+        // System.out.println("Feature: " + typeName + "\nSource: " + featureSource.toString());
+        // System.out.println("SimpleFeatureType: " + shpDataStore.getSchema());
+        // System.out.println("Number of features: " + result.size());
 
         while(iterator.hasNext()) {
             // data Reader
@@ -190,8 +216,8 @@ public class RoadGridList implements Serializable {
             }
 
             if (!exists(gridList, mapID)) {
-                ArrayList<SerializableSimpleFeatureImpl> roadList = new ArrayList<>();
-                roadList.add((SerializableSimpleFeatureImpl) feature);
+                ArrayList<SimpleFeature> roadList = new ArrayList<>();
+                roadList.add(feature);
                 gridList.put(mapID,roadList);
             } else {
                 ArrayList<SimpleFeature> roadList = getGridByID(mapID);
