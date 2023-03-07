@@ -15,7 +15,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-streaming" % "3.3.2",
   "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
   "org.apache.logging.log4j" % "log4j-core" % "2.20.0",
-  "org.geotools" % "gt-shapefile" % "24.0",
+  "org.geotools" % "gt-shapefile" % "25.0",
   "org.postgis" % "postgis-jdbc" % "1.3.3"
 )
 

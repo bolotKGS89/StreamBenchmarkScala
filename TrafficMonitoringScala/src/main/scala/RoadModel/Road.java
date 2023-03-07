@@ -2,7 +2,9 @@ package RoadModel;
 
 import Util.collections.FixedSizeQueue;
 
-public class Road {
+import java.io.Serializable;
+
+public class Road implements Serializable {
     private final int roadID;
     private final FixedSizeQueue<Integer> roadSpeed;
     private int averageSpeed;

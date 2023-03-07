@@ -7,7 +7,7 @@ import java.util
 import java.util.{ArrayList, List}
 import scala.collection.mutable.ListBuffer
 
-class Sampler(private val samplesPerSeconds: Long) // constructor
+class Sampler(private val samplesPerSeconds: Long) extends Serializable // constructor
 {
   private var samples: ListBuffer[Double] = new ListBuffer[Double]
   private var epoch: Long = System.nanoTime

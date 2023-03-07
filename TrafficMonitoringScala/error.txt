@@ -1,201 +1,80 @@
 Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
-23/03/07 09:56:17 WARN Utils: Your hostname, bolot-BOHK-WAX9X resolves to a loopback address: 127.0.1.1; using 172.23.0.1 instead (on interface docker_gwbridge)
-23/03/07 09:56:17 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
-23/03/07 09:56:18 INFO SparkContext: Running Spark version 3.3.2
-23/03/07 09:56:18 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-23/03/07 09:56:18 INFO ResourceUtils: ==============================================================
-23/03/07 09:56:18 INFO ResourceUtils: No custom resources configured for spark.driver.
-23/03/07 09:56:18 INFO ResourceUtils: ==============================================================
-23/03/07 09:56:18 INFO SparkContext: Submitted application: SparkTrafficMonitoring
-23/03/07 09:56:18 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
-23/03/07 09:56:18 INFO ResourceProfile: Limiting resource is cpu
-23/03/07 09:56:18 INFO ResourceProfileManager: Added ResourceProfile id: 0
-23/03/07 09:56:18 INFO SecurityManager: Changing view acls to: bolot
-23/03/07 09:56:18 INFO SecurityManager: Changing modify acls to: bolot
-23/03/07 09:56:18 INFO SecurityManager: Changing view acls groups to: 
-23/03/07 09:56:18 INFO SecurityManager: Changing modify acls groups to: 
-23/03/07 09:56:18 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(bolot); groups with view permissions: Set(); users  with modify permissions: Set(bolot); groups with modify permissions: Set()
-23/03/07 09:56:18 INFO Utils: Successfully started service 'sparkDriver' on port 35395.
-23/03/07 09:56:18 INFO SparkEnv: Registering MapOutputTracker
-23/03/07 09:56:18 INFO SparkEnv: Registering BlockManagerMaster
-23/03/07 09:56:18 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
-23/03/07 09:56:18 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
-23/03/07 09:56:19 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
-23/03/07 09:56:19 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-80a51be2-5d5d-405a-8cb4-74038f35c9f9
-23/03/07 09:56:19 INFO MemoryStore: MemoryStore started with capacity 852.0 MiB
-23/03/07 09:56:19 INFO SparkEnv: Registering OutputCommitCoordinator
-23/03/07 09:56:19 INFO Utils: Successfully started service 'SparkUI' on port 4040.
-23/03/07 09:56:19 INFO Executor: Starting executor ID driver on host 172.23.0.1
-23/03/07 09:56:19 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
-23/03/07 09:56:19 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46073.
-23/03/07 09:56:19 INFO NettyBlockTransferService: Server created on 172.23.0.1:46073
-23/03/07 09:56:19 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
-23/03/07 09:56:19 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 172.23.0.1, 46073, None)
-23/03/07 09:56:19 INFO BlockManagerMasterEndpoint: Registering block manager 172.23.0.1:46073 with 852.0 MiB RAM, BlockManagerId(driver, 172.23.0.1, 46073, None)
-23/03/07 09:56:19 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 172.23.0.1, 46073, None)
-23/03/07 09:56:19 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 172.23.0.1, 46073, None)
-23/03/07 09:56:20 INFO FileInputDStream: Duration for remembering RDDs set to 60000 ms for org.apache.spark.streaming.dstream.FileInputDStream@1039bfc4
-23/03/07 09:56:24 INFO FileInputDStream: Slide time = 5000 ms
-23/03/07 09:56:24 INFO FileInputDStream: Storage level = Serialized 1x Replicated
-23/03/07 09:56:24 INFO FileInputDStream: Checkpoint interval = null
-23/03/07 09:56:24 INFO FileInputDStream: Remember interval = 60000 ms
-23/03/07 09:56:24 INFO FileInputDStream: Initialized and validated org.apache.spark.streaming.dstream.FileInputDStream@1039bfc4
-23/03/07 09:56:24 INFO MappedDStream: Slide time = 5000 ms
-23/03/07 09:56:24 INFO MappedDStream: Storage level = Serialized 1x Replicated
-23/03/07 09:56:24 INFO MappedDStream: Checkpoint interval = null
-23/03/07 09:56:24 INFO MappedDStream: Remember interval = 5000 ms
-23/03/07 09:56:24 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@7cc7d708
-23/03/07 09:56:24 INFO TransformedDStream: Slide time = 5000 ms
-23/03/07 09:56:24 INFO TransformedDStream: Storage level = Serialized 1x Replicated
-23/03/07 09:56:24 INFO TransformedDStream: Checkpoint interval = null
-23/03/07 09:56:24 INFO TransformedDStream: Remember interval = 5000 ms
-23/03/07 09:56:24 INFO TransformedDStream: Initialized and validated org.apache.spark.streaming.dstream.TransformedDStream@18ed9d02
-23/03/07 09:56:24 INFO TransformedDStream: Slide time = 5000 ms
-23/03/07 09:56:24 INFO TransformedDStream: Storage level = Serialized 1x Replicated
-23/03/07 09:56:24 INFO TransformedDStream: Checkpoint interval = null
-23/03/07 09:56:24 INFO TransformedDStream: Remember interval = 5000 ms
-23/03/07 09:56:24 INFO TransformedDStream: Initialized and validated org.apache.spark.streaming.dstream.TransformedDStream@18f072ec
-23/03/07 09:56:24 INFO TransformedDStream: Slide time = 5000 ms
-23/03/07 09:56:24 INFO TransformedDStream: Storage level = Serialized 1x Replicated
-23/03/07 09:56:24 INFO TransformedDStream: Checkpoint interval = null
-23/03/07 09:56:24 INFO TransformedDStream: Remember interval = 5000 ms
-23/03/07 09:56:24 INFO TransformedDStream: Initialized and validated org.apache.spark.streaming.dstream.TransformedDStream@6f97c8c3
-23/03/07 09:56:24 INFO TransformedDStream: Slide time = 5000 ms
-23/03/07 09:56:24 INFO TransformedDStream: Storage level = Serialized 1x Replicated
-23/03/07 09:56:24 INFO TransformedDStream: Checkpoint interval = null
-23/03/07 09:56:24 INFO TransformedDStream: Remember interval = 5000 ms
-23/03/07 09:56:24 INFO TransformedDStream: Initialized and validated org.apache.spark.streaming.dstream.TransformedDStream@2daa2dae
-23/03/07 09:56:24 INFO ForEachDStream: Slide time = 5000 ms
-23/03/07 09:56:24 INFO ForEachDStream: Storage level = Serialized 1x Replicated
-23/03/07 09:56:24 INFO ForEachDStream: Checkpoint interval = null
-23/03/07 09:56:24 INFO ForEachDStream: Remember interval = 5000 ms
-23/03/07 09:56:24 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@59dba094
-23/03/07 09:56:24 INFO RecurringTimer: Started timer for JobGenerator at time 1678179385000
-23/03/07 09:56:24 INFO JobGenerator: Started JobGenerator at 1678179385000 ms
-23/03/07 09:56:24 INFO JobScheduler: Started JobScheduler
-23/03/07 09:56:24 INFO StreamingContext: StreamingContext started
-23/03/07 09:56:25 WARN FileInputDStream: Error finding new files under hdfs://127.0.0.1:9000/
-java.net.ConnectException: Call From bolot-BOHK-WAX9X/127.0.1.1 to localhost:9000 failed on connection exception: java.net.ConnectException: Connection refused; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
-	at org.apache.hadoop.net.NetUtils.wrapWithMessage(NetUtils.java:913)
-	at org.apache.hadoop.net.NetUtils.wrapException(NetUtils.java:828)
-	at org.apache.hadoop.ipc.Client.getRpcResponse(Client.java:1616)
-	at org.apache.hadoop.ipc.Client.call(Client.java:1558)
-	at org.apache.hadoop.ipc.Client.call(Client.java:1455)
-	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:242)
-	at org.apache.hadoop.ipc.ProtobufRpcEngine2$Invoker.invoke(ProtobufRpcEngine2.java:129)
-	at jdk.proxy2/jdk.proxy2.$Proxy38.getFileInfo(Unknown Source)
-	at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.getFileInfo(ClientNamenodeProtocolTranslatorPB.java:965)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:422)
-	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeMethod(RetryInvocationHandler.java:165)
-	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invoke(RetryInvocationHandler.java:157)
-	at org.apache.hadoop.io.retry.RetryInvocationHandler$Call.invokeOnce(RetryInvocationHandler.java:95)
-	at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:359)
-	at jdk.proxy2/jdk.proxy2.$Proxy39.getFileInfo(Unknown Source)
-	at org.apache.hadoop.hdfs.DFSClient.getFileInfo(DFSClient.java:1739)
-	at org.apache.hadoop.hdfs.DistributedFileSystem$29.doCall(DistributedFileSystem.java:1753)
-	at org.apache.hadoop.hdfs.DistributedFileSystem$29.doCall(DistributedFileSystem.java:1750)
-	at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
-	at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:1765)
-	at org.apache.hadoop.fs.Globber.getFileStatus(Globber.java:115)
-	at org.apache.hadoop.fs.Globber.doGlob(Globber.java:362)
-	at org.apache.hadoop.fs.Globber.glob(Globber.java:202)
-	at org.apache.hadoop.fs.FileSystem.globStatus(FileSystem.java:2124)
-	at org.apache.spark.streaming.dstream.FileInputDStream.findNewFiles(FileInputDStream.scala:195)
-	at org.apache.spark.streaming.dstream.FileInputDStream.compute(FileInputDStream.scala:146)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$3(DStream.scala:343)
-	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:61)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$2(DStream.scala:343)
-	at org.apache.spark.streaming.dstream.DStream.createRDDWithLocalProperties(DStream.scala:417)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$1(DStream.scala:342)
-	at scala.Option.orElse(Option.scala:478)
-	at org.apache.spark.streaming.dstream.DStream.getOrCompute(DStream.scala:335)
-	at org.apache.spark.streaming.dstream.MappedDStream.compute(MappedDStream.scala:36)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$3(DStream.scala:343)
-	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:61)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$2(DStream.scala:343)
-	at org.apache.spark.streaming.dstream.DStream.createRDDWithLocalProperties(DStream.scala:417)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$1(DStream.scala:342)
-	at scala.Option.orElse(Option.scala:478)
-	at org.apache.spark.streaming.dstream.DStream.getOrCompute(DStream.scala:335)
-	at org.apache.spark.streaming.dstream.TransformedDStream.$anonfun$compute$1(TransformedDStream.scala:42)
-	at scala.collection.immutable.List.map(List.scala:222)
-	at scala.collection.immutable.List.map(List.scala:82)
-	at org.apache.spark.streaming.dstream.TransformedDStream.compute(TransformedDStream.scala:42)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$3(DStream.scala:343)
-	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:61)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$2(DStream.scala:343)
-	at org.apache.spark.streaming.dstream.DStream.createRDDWithLocalProperties(DStream.scala:417)
-	at org.apache.spark.streaming.dstream.TransformedDStream.createRDDWithLocalProperties(TransformedDStream.scala:65)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$1(DStream.scala:342)
-	at scala.Option.orElse(Option.scala:478)
-	at org.apache.spark.streaming.dstream.DStream.getOrCompute(DStream.scala:335)
-	at org.apache.spark.streaming.dstream.TransformedDStream.$anonfun$compute$1(TransformedDStream.scala:42)
-	at scala.collection.immutable.List.map(List.scala:222)
-	at scala.collection.immutable.List.map(List.scala:82)
-	at org.apache.spark.streaming.dstream.TransformedDStream.compute(TransformedDStream.scala:42)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$3(DStream.scala:343)
-	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:61)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$2(DStream.scala:343)
-	at org.apache.spark.streaming.dstream.DStream.createRDDWithLocalProperties(DStream.scala:417)
-	at org.apache.spark.streaming.dstream.TransformedDStream.createRDDWithLocalProperties(TransformedDStream.scala:65)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$1(DStream.scala:342)
-	at scala.Option.orElse(Option.scala:478)
-	at org.apache.spark.streaming.dstream.DStream.getOrCompute(DStream.scala:335)
-	at org.apache.spark.streaming.dstream.TransformedDStream.$anonfun$compute$1(TransformedDStream.scala:42)
-	at scala.collection.immutable.List.map(List.scala:222)
-	at scala.collection.immutable.List.map(List.scala:82)
-	at org.apache.spark.streaming.dstream.TransformedDStream.compute(TransformedDStream.scala:42)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$3(DStream.scala:343)
-	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:61)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$2(DStream.scala:343)
-	at org.apache.spark.streaming.dstream.DStream.createRDDWithLocalProperties(DStream.scala:417)
-	at org.apache.spark.streaming.dstream.TransformedDStream.createRDDWithLocalProperties(TransformedDStream.scala:65)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$1(DStream.scala:342)
-	at scala.Option.orElse(Option.scala:478)
-	at org.apache.spark.streaming.dstream.DStream.getOrCompute(DStream.scala:335)
-	at org.apache.spark.streaming.dstream.TransformedDStream.$anonfun$compute$1(TransformedDStream.scala:42)
-	at scala.collection.immutable.List.map(List.scala:222)
-	at scala.collection.immutable.List.map(List.scala:82)
-	at org.apache.spark.streaming.dstream.TransformedDStream.compute(TransformedDStream.scala:42)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$3(DStream.scala:343)
-	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:61)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$2(DStream.scala:343)
-	at org.apache.spark.streaming.dstream.DStream.createRDDWithLocalProperties(DStream.scala:417)
-	at org.apache.spark.streaming.dstream.TransformedDStream.createRDDWithLocalProperties(TransformedDStream.scala:65)
-	at org.apache.spark.streaming.dstream.DStream.$anonfun$getOrCompute$1(DStream.scala:342)
-	at scala.Option.orElse(Option.scala:478)
-	at org.apache.spark.streaming.dstream.DStream.getOrCompute(DStream.scala:335)
-	at org.apache.spark.streaming.dstream.ForEachDStream.generateJob(ForEachDStream.scala:48)
-	at org.apache.spark.streaming.DStreamGraph.$anonfun$generateJobs$2(DStreamGraph.scala:123)
-	at scala.collection.StrictOptimizedIterableOps.flatMap(StrictOptimizedIterableOps.scala:118)
-	at scala.collection.StrictOptimizedIterableOps.flatMap$(StrictOptimizedIterableOps.scala:105)
-	at scala.collection.mutable.ArraySeq.flatMap(ArraySeq.scala:38)
-	at org.apache.spark.streaming.DStreamGraph.generateJobs(DStreamGraph.scala:122)
-	at org.apache.spark.streaming.scheduler.JobGenerator.$anonfun$generateJobs$1(JobGenerator.scala:254)
-	at scala.util.Try$.apply(Try.scala:212)
-	at org.apache.spark.streaming.scheduler.JobGenerator.generateJobs(JobGenerator.scala:252)
-	at org.apache.spark.streaming.scheduler.JobGenerator.org$apache$spark$streaming$scheduler$JobGenerator$$processEvent(JobGenerator.scala:186)
-	at org.apache.spark.streaming.scheduler.JobGenerator$$anon$1.onReceive(JobGenerator.scala:91)
-	at org.apache.spark.streaming.scheduler.JobGenerator$$anon$1.onReceive(JobGenerator.scala:90)
-	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
-Caused by: java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
-	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
-	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:973)
-	at org.apache.hadoop.net.SocketIOWithTimeout.connect(SocketIOWithTimeout.java:205)
-	at org.apache.hadoop.net.NetUtils.connect(NetUtils.java:586)
-	at org.apache.hadoop.ipc.Client$Connection.setupConnection(Client.java:711)
-	at org.apache.hadoop.ipc.Client$Connection.setupIOstreams(Client.java:833)
-	at org.apache.hadoop.ipc.Client$Connection.access$3800(Client.java:414)
-	at org.apache.hadoop.ipc.Client.getConnection(Client.java:1677)
-	at org.apache.hadoop.ipc.Client.call(Client.java:1502)
-	... 100 more
-23/03/07 09:56:25 INFO FileInputDStream: New files at time 1678179385000 ms:
+23/03/07 13:54:20 WARN Utils: Your hostname, bolot-BOHK-WAX9X resolves to a loopback address: 127.0.1.1; using 172.100.15.137 instead (on interface enx00133ba9f97f)
+23/03/07 13:54:20 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+23/03/07 13:54:20 INFO SparkContext: Running Spark version 3.3.2
+23/03/07 13:54:20 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+23/03/07 13:54:20 INFO ResourceUtils: ==============================================================
+23/03/07 13:54:20 INFO ResourceUtils: No custom resources configured for spark.driver.
+23/03/07 13:54:20 INFO ResourceUtils: ==============================================================
+23/03/07 13:54:20 INFO SparkContext: Submitted application: SparkTrafficMonitoring
+23/03/07 13:54:20 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+23/03/07 13:54:20 INFO ResourceProfile: Limiting resource is cpu
+23/03/07 13:54:20 INFO ResourceProfileManager: Added ResourceProfile id: 0
+23/03/07 13:54:20 INFO SecurityManager: Changing view acls to: bolot
+23/03/07 13:54:20 INFO SecurityManager: Changing modify acls to: bolot
+23/03/07 13:54:20 INFO SecurityManager: Changing view acls groups to: 
+23/03/07 13:54:20 INFO SecurityManager: Changing modify acls groups to: 
+23/03/07 13:54:20 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(bolot); groups with view permissions: Set(); users  with modify permissions: Set(bolot); groups with modify permissions: Set()
+23/03/07 13:54:21 INFO Utils: Successfully started service 'sparkDriver' on port 33697.
+23/03/07 13:54:21 INFO SparkEnv: Registering MapOutputTracker
+23/03/07 13:54:21 INFO SparkEnv: Registering BlockManagerMaster
+23/03/07 13:54:21 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+23/03/07 13:54:21 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+23/03/07 13:54:21 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+23/03/07 13:54:21 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-d48415f6-1d2c-4487-ab0f-3fb0ae96f0d0
+23/03/07 13:54:21 INFO MemoryStore: MemoryStore started with capacity 852.0 MiB
+23/03/07 13:54:21 INFO SparkEnv: Registering OutputCommitCoordinator
+23/03/07 13:54:21 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+23/03/07 13:54:21 INFO Executor: Starting executor ID driver on host cpe-172-100-15-137.twcny.res.rr.com
+23/03/07 13:54:21 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+23/03/07 13:54:21 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 38071.
+23/03/07 13:54:21 INFO NettyBlockTransferService: Server created on cpe-172-100-15-137.twcny.res.rr.com:38071
+23/03/07 13:54:21 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+23/03/07 13:54:21 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, cpe-172-100-15-137.twcny.res.rr.com, 38071, None)
+23/03/07 13:54:21 INFO BlockManagerMasterEndpoint: Registering block manager cpe-172-100-15-137.twcny.res.rr.com:38071 with 852.0 MiB RAM, BlockManagerId(driver, cpe-172-100-15-137.twcny.res.rr.com, 38071, None)
+23/03/07 13:54:21 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, cpe-172-100-15-137.twcny.res.rr.com, 38071, None)
+23/03/07 13:54:21 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, cpe-172-100-15-137.twcny.res.rr.com, 38071, None)
+23/03/07 13:54:22 INFO FileInputDStream: Duration for remembering RDDs set to 60000 ms for org.apache.spark.streaming.dstream.FileInputDStream@6436e181
+23/03/07 13:54:25 INFO FileInputDStream: Slide time = 5000 ms
+23/03/07 13:54:25 INFO FileInputDStream: Storage level = Serialized 1x Replicated
+23/03/07 13:54:25 INFO FileInputDStream: Checkpoint interval = null
+23/03/07 13:54:25 INFO FileInputDStream: Remember interval = 60000 ms
+23/03/07 13:54:25 INFO FileInputDStream: Initialized and validated org.apache.spark.streaming.dstream.FileInputDStream@6436e181
+23/03/07 13:54:25 INFO MappedDStream: Slide time = 5000 ms
+23/03/07 13:54:25 INFO MappedDStream: Storage level = Serialized 1x Replicated
+23/03/07 13:54:25 INFO MappedDStream: Checkpoint interval = null
+23/03/07 13:54:25 INFO MappedDStream: Remember interval = 5000 ms
+23/03/07 13:54:25 INFO MappedDStream: Initialized and validated org.apache.spark.streaming.dstream.MappedDStream@1fe59e6e
+23/03/07 13:54:25 INFO TransformedDStream: Slide time = 5000 ms
+23/03/07 13:54:25 INFO TransformedDStream: Storage level = Serialized 1x Replicated
+23/03/07 13:54:25 INFO TransformedDStream: Checkpoint interval = null
+23/03/07 13:54:25 INFO TransformedDStream: Remember interval = 5000 ms
+23/03/07 13:54:25 INFO TransformedDStream: Initialized and validated org.apache.spark.streaming.dstream.TransformedDStream@39ab1ef2
+23/03/07 13:54:25 INFO TransformedDStream: Slide time = 5000 ms
+23/03/07 13:54:25 INFO TransformedDStream: Storage level = Serialized 1x Replicated
+23/03/07 13:54:25 INFO TransformedDStream: Checkpoint interval = null
+23/03/07 13:54:25 INFO TransformedDStream: Remember interval = 5000 ms
+23/03/07 13:54:25 INFO TransformedDStream: Initialized and validated org.apache.spark.streaming.dstream.TransformedDStream@506d7569
+23/03/07 13:54:25 INFO TransformedDStream: Slide time = 5000 ms
+23/03/07 13:54:25 INFO TransformedDStream: Storage level = Serialized 1x Replicated
+23/03/07 13:54:25 INFO TransformedDStream: Checkpoint interval = null
+23/03/07 13:54:25 INFO TransformedDStream: Remember interval = 5000 ms
+23/03/07 13:54:25 INFO TransformedDStream: Initialized and validated org.apache.spark.streaming.dstream.TransformedDStream@253f76fa
+23/03/07 13:54:25 INFO TransformedDStream: Slide time = 5000 ms
+23/03/07 13:54:25 INFO TransformedDStream: Storage level = Serialized 1x Replicated
+23/03/07 13:54:25 INFO TransformedDStream: Checkpoint interval = null
+23/03/07 13:54:25 INFO TransformedDStream: Remember interval = 5000 ms
+23/03/07 13:54:25 INFO TransformedDStream: Initialized and validated org.apache.spark.streaming.dstream.TransformedDStream@169a9add
+23/03/07 13:54:25 INFO ForEachDStream: Slide time = 5000 ms
+23/03/07 13:54:25 INFO ForEachDStream: Storage level = Serialized 1x Replicated
+23/03/07 13:54:25 INFO ForEachDStream: Checkpoint interval = null
+23/03/07 13:54:25 INFO ForEachDStream: Remember interval = 5000 ms
+23/03/07 13:54:25 INFO ForEachDStream: Initialized and validated org.apache.spark.streaming.dstream.ForEachDStream@77a74a72
+23/03/07 13:54:25 INFO RecurringTimer: Started timer for JobGenerator at time 1678193670000
+23/03/07 13:54:25 INFO JobGenerator: Started JobGenerator at 1678193670000 ms
+23/03/07 13:54:25 INFO JobScheduler: Started JobScheduler
+23/03/07 13:54:25 INFO StreamingContext: StreamingContext started
+23/03/07 13:54:30 INFO FileInputDStream: New files at time 1678193670000 ms:
 
-23/03/07 09:56:25 WARN SparkTrafficModeling: [Source] latency: 87340999
-23/03/07 09:56:25 WARN SparkTrafficModeling: [Source] bandwidth: 0.00000 MB/s
+23/03/07 13:54:30 WARN SparkTrafficMonitoring: [Source] latency: 54727602
+23/03/07 13:54:30 WARN SparkTrafficMonitoring: [Source] bandwidth: 0.00000 MB/s

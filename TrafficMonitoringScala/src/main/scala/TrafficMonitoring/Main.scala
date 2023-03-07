@@ -72,7 +72,7 @@ object Main {
 
     val consoleLines = new ConsoleSink(speedCalculatorLines, genRate, sinkParDeg, sampling).execute()
 
-    consoleLines.print(5)
+    consoleLines.print(10)
 
     ssc.start()
     ssc.awaitTermination()

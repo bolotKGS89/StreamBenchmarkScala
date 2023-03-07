@@ -11,6 +11,7 @@ import org.postgis.MultiLineString;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.NotSerializableException;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
@@ -25,7 +26,8 @@ import java.util.Map;
  *  The class defines a data structure containing information about the roads layer extracted from the shapefile.
  */
 public class RoadGridList implements Serializable {
-    private HashMap<String, ArrayList<SimpleFeature>> gridList = new HashMap<>();
+
+    private HashMap<String, ArrayList<SimpleFeature>> gridList = new HashMap<String, ArrayList<SimpleFeature>>();
     private String idKey;
     private String widthKey;
 
@@ -49,7 +51,7 @@ public class RoadGridList implements Serializable {
      *  @return road ID corresponding to p in the map described by the shapefile
      *  @throws SQLException
      */
-    public int fetchRoadID(Point p) throws SQLException {
+    public int fetchRoadID(Point p) throws SQLException, NotSerializableException {
         int lastMiniRoadID = -2;
 
         Integer mapID_lon = (int)(p.getX()*10);
@@ -158,20 +160,15 @@ public class RoadGridList implements Serializable {
      */
     private HashMap<String, ArrayList<SimpleFeature>> read(String path) throws IOException, SQLException {
         File file = new File(path);
-        // System.out.println("File: " + file);
 
         ShapefileDataStore shpDataStore = new ShapefileDataStore(file.toURI().toURL());
         shpDataStore.setCharset(Charset.forName("GBK"));
-        // System.out.println("Shapefile data store: \n" + shpDataStore);
 
         // feature access
         String typeName = shpDataStore.getTypeNames()[0];
         FeatureSource<SimpleFeatureType, SimpleFeature> featureSource = shpDataStore.getFeatureSource(typeName);
         FeatureCollection<SimpleFeatureType, SimpleFeature> result = featureSource.getFeatures();
         FeatureIterator<SimpleFeature> iterator = result.features();
-        // System.out.println("Feature: " + typeName + "\nSource: " + featureSource.toString());
-        // System.out.println("SimpleFeatureType: " + shpDataStore.getSchema());
-        // System.out.println("Number of features: " + result.size());
 
         while(iterator.hasNext()) {
             // data Reader

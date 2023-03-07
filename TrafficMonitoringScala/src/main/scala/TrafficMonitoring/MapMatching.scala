@@ -53,11 +53,13 @@ class MapMatching(lines: DStream[(String, Double, Double, Double, Int, Long)], p
               }}).filter({ case (vehicleID, latitude, longitude, speed, bearing, timestamp) => {
                 val record = new GPSRecord(longitude, latitude, speed, bearing)
                 val roadID = sectors.fetchRoadID(record)
+//                val roadID = 3
                 if (roadID != 1) true else false
               }}).map({ case (_, latitude, longitude, speed, bearing, timestamp) => {
                 try {
                     val record = new GPSRecord(longitude, latitude, speed, bearing)
                     val roadID = sectors.fetchRoadID(record)
+//                    val roadID = 1
                     if (roads.containsKey(roadID)) {
                         val count = roads.get(roadID)
                         roads.put(roadID, count + 1)
