@@ -27,7 +27,7 @@ import java.util.Map;
  */
 public class RoadGridList implements Serializable {
 
-    private HashMap<String, ArrayList<SimpleFeature>> gridList = new HashMap<String, ArrayList<SimpleFeature>>();
+    private HashMap<String, ArrayList<SerializableSimpleFeatureImpl>> gridList = new HashMap<String, ArrayList<SerializableSimpleFeatureImpl>>();
     private String idKey;
     private String widthKey;
 
@@ -66,7 +66,7 @@ public class RoadGridList implements Serializable {
         // search for a key (coordinates <X, Y>) in the map equals to point p coordinates <p.X, p.Y>;
         // the point will be part of one or more than one road (road IDs are contained in the list
         // associated to the key coordinates
-        for (Map.Entry<String, ArrayList<SimpleFeature>> grid : gridList.entrySet()) {
+        for (Map.Entry<String, ArrayList<SerializableSimpleFeatureImpl>> grid : gridList.entrySet()) {
             gridCount++;
             String s = grid.getKey();
 
@@ -128,7 +128,7 @@ public class RoadGridList implements Serializable {
      *          null otherwise
      */
     private ArrayList<SimpleFeature> getGridByID(String mapID) {
-        for (Map.Entry<String, ArrayList<SimpleFeature>> g : gridList.entrySet()) {
+        for (Map.Entry<String, ArrayList<SerializableSimpleFeatureImpl>> g : gridList.entrySet()) {
             if (g.getKey().equals(mapID)) {
                 return g.getValue();
             }
@@ -142,8 +142,8 @@ public class RoadGridList implements Serializable {
      *  @param mapID coordinates <X, Y>
      *  @return true if an entry associated to the key mapID already exists, false otherwise
      */
-    private Boolean exists(HashMap<String, ArrayList<SimpleFeature>> gridList, String mapID) {
-        for (Map.Entry<String, ArrayList<SimpleFeature>> g : gridList.entrySet()) {
+    private Boolean exists(HashMap<String, ArrayList<SerializableSimpleFeatureImpl>> gridList, String mapID) {
+        for (Map.Entry<String, ArrayList<SerializableSimpleFeatureImpl>> g : gridList.entrySet()) {
             if (g.getKey().equals(mapID)) {
                 return true;
             }
@@ -158,7 +158,7 @@ public class RoadGridList implements Serializable {
      *  @throws IOException
      *  @throws SQLException
      */
-    private HashMap<String, ArrayList<SimpleFeature>> read(String path) throws IOException, SQLException {
+    private HashMap<String, ArrayList<SerializableSimpleFeatureImpl>> read(String path) throws IOException, SQLException {
         File file = new File(path);
 
         ShapefileDataStore shpDataStore = new ShapefileDataStore(file.toURI().toURL());
@@ -190,8 +190,8 @@ public class RoadGridList implements Serializable {
             }
 
             if (!exists(gridList, mapID)) {
-                ArrayList<SimpleFeature> roadList = new ArrayList<>();
-                roadList.add(feature);
+                ArrayList<SerializableSimpleFeatureImpl> roadList = new ArrayList<>();
+                roadList.add((SerializableSimpleFeatureImpl) feature);
                 gridList.put(mapID,roadList);
             } else {
                 ArrayList<SimpleFeature> roadList = getGridByID(mapID);
