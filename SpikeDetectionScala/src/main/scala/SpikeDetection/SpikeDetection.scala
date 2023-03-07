@@ -3,18 +3,20 @@ package SpikeDetection
 import Util.Log
 import org.apache.spark.streaming.dstream.DStream
 
+import java.util.Properties
+
 class SpikeDetection extends Serializable {
   private var spikes = 0
   private var processed = 0
-  private val spikeThreshold = 0.01d
-  def execute(tuples: DStream[(String, Double, Double, Long)], counterParDeg: Int): DStream[(String, Double, Double, Long)] = {
+
+  def execute(tuples: DStream[(String, Double, Double, Long)], counterParDeg: Int, spikeThreshold: Double): DStream[(String, Double, Double, Long)] = {
 
     tuples.transform({ rdd =>
       val startTime = System.nanoTime()
 
       val ans = rdd.repartition(counterParDeg).filter({ case(deviceId, movingAvgInstant, nextPropertyValue, timestamp) => {
 
-        Log.log.debug("[Detector] tuple: deviceID " + deviceId +
+        Log.log.debug("[SpikeDetection] tuple: deviceID " + deviceId +
           ", incremental_average " + movingAvgInstant +
           ", next_value " + nextPropertyValue +
           ", ts " + timestamp)

@@ -26,7 +26,7 @@ class FileParserSource() extends Serializable{
         val startTime = System.nanoTime()
 
         val words = rdd.repartition(sourceParDeg).flatMap((line) => line.split("\n")).filter((line) => !line.isEmpty)
-          .map(word => word.split("\\s+")).filter((splitWords) => splitWords.length == 8)
+          .map(word => word.split("\\s+")).filter((splitWords) => splitWords.length >= 8)
             .map((splitWords) => {
             Log.log.debug("[Source] tuple: deviceID " + splitWords(DatasetParsing.DeviceIdField) +
               ", property " + valueField + " " + fieldList.get(valueField))

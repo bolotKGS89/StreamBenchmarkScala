@@ -1,6 +1,5 @@
 package FraudDetection
 
-import MarkovModelPrediction.{MarkovModelPredictor, ModelBasedPredictor}
 import org.apache.spark.streaming.dstream.DStream
 import Util.Log
 import org.apache.commons.lang.StringUtils
@@ -27,19 +26,14 @@ class FraudPredictor extends Serializable {
         Log.log.debug(s"[Predictor] tuple: entityID $entityId record $record ts $timestamp")
 
         (p, entityId, timestamp)
-      }}).filter((predTuple) => {
-        val prediction = predTuple._1
+      }}).filter({ case(prediction, entityId, timestamp) => {
         prediction.isOutlier
-      }).map((predTuple) => {
-        val entityId = predTuple._2
-        val score = predTuple._1.getScore
-        val states = predTuple._1.getStates.mkString(",")
-        val timeStamp = predTuple._3
-        Log.log.debug(s"[Predictor] outlier: entityID $entityId score $score states $states")
-        counter.add(score.toLong)
+      }}).map({ case(prediction, entityId, timestamp) => {
+        Log.log.debug(s"[Predictor] outlier: entityID $entityId score ${prediction.getScore} states ${prediction.getStates.mkString(",")}")
+        counter.add(prediction.getScore.toLong)
 
-        (entityId, score, states, timeStamp)
-      })
+        (entityId, prediction.getScore, prediction.getStates, timestamp)
+      }})
 
       val endTime = System.nanoTime()
       val latency = endTime - startTime // Measure the time it took to process the data

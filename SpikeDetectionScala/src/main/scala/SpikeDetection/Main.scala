@@ -57,6 +57,7 @@ object SparkSpikeDetection {
 
     val inputFile = props.getProperty("sd.spout.path")
     val valueField = props.getProperty("sd.parser.value_field")
+    val spikeThreshold = props.getProperty("sd.spike_detector.threshold").toDouble
 
     val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkSpikeDetection")
     val ssc = new StreamingContext(sparkConf, Seconds(5))
@@ -68,7 +69,7 @@ object SparkSpikeDetection {
     val avgTuples = new MovingAverage().execute(tuples, mvgAvgParDeg)
 
     //3rd stage
-    val filteredTuples = new SpikeDetection().execute(avgTuples, counterParDeg)
+    val filteredTuples = new SpikeDetection().execute(avgTuples, counterParDeg, spikeThreshold)
 
     //4th stage
     // sampling should be cmd argument
