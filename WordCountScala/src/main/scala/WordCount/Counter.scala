@@ -30,8 +30,8 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
 
       val elapsedTime = (endTime - startTime) / 1000000000.0
       val mbs: Double = (counter.sum / elapsedTime).toDouble
-      val formattedMbs = String.format("%.5f", mbs)
-      Log.log.info(s"[Counter] bandwidth: $formattedMbs MB/s")
+//      val formattedMbs = String.format("%.5f", mbs)
+//      Log.log.info(s"[Counter] bandwidth: $formattedMbs MB/s")
 
       //            val endMetrics = taskMetrics
       //            val latency = taskContext.taskMetrics.executorRunTime

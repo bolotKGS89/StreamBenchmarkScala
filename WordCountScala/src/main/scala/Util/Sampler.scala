@@ -25,7 +25,7 @@ class Sampler(val samplesPerSeconds: Long) extends Serializable// constructor
     // add samples according to the sample rate
     val seconds: Double = (timestamp - epoch) / 1e9
     if (samplesPerSeconds == 0 || counter <= samplesPerSeconds * seconds) {
-      samples.addOne(value)
+//      samples.add(value)
       counter += 1
     }
   }

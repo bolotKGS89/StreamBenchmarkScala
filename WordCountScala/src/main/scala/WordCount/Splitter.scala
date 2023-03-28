@@ -48,8 +48,8 @@ class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext, parDegree:
 
           val elapsedTime = (endTime - startTime) / 1000000000.0
           val mbs: Double = (counter.sum / elapsedTime).toDouble
-          val formattedMbs = String.format("%.5f", mbs)
-          Log.log.warn(s"[Splitter] bandwidth: $formattedMbs MB/s")
+//          val formattedMbs = String.format("%.5f", mbs)
+//          Log.log.warn(s"[Splitter] bandwidth: $formattedMbs MB/s")
 
           words
         })
