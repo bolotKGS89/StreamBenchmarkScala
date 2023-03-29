@@ -74,7 +74,7 @@ object SparkWordCount {
 
     // Should I use MetricGroup and write them in .json
 
-    wordCounts.print(20)
+    wordCounts.print(100)
 
     ssc.start()
     ssc.awaitTermination()
