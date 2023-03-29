@@ -7,6 +7,7 @@ import org.apache.spark.streaming.dstream.DStream
 import org.apache.spark.executor.TaskMetrics
 
 import java.io.FileNotFoundException
+import scala.collection.mutable.Queue
 
 class FileParserSource(path: String, ssc: StreamingContext, parDegree: Int) {
 
@@ -15,7 +16,11 @@ class FileParserSource(path: String, ssc: StreamingContext, parDegree: Int) {
     try {
           val counter = ssc.sparkContext.longAccumulator
 
-          ssc.textFileStream(path).transform({ rdd =>
+          val rdd = ssc.sparkContext.textFile(path)
+
+          ssc.queueStream(
+            Queue(rdd)
+          ).transform({ rdd =>
 //            val taskContext = TaskContext.get
             val startTime = System.nanoTime()
 //             val startMetrics = taskMetrics
