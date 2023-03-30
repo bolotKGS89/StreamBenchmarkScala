@@ -8,6 +8,7 @@ import org.apache.spark.streaming.dstream.DStream
 
 import scala.collection.mutable.ListBuffer
 import java.io.FileNotFoundException
+import scala.collection.mutable.Queue
 
 class FileParserSource() extends Serializable{
 
@@ -22,7 +23,11 @@ class FileParserSource() extends Serializable{
     val counter = ssc.sparkContext.longAccumulator
 
     try {
-      ssc.textFileStream(path).transform({ rdd =>
+      val rdd = ssc.sparkContext.textFile(path)
+
+      ssc.queueStream(
+        Queue(rdd)
+      ).transform({ rdd =>
         val startTime = System.nanoTime()
 
         val words = rdd.repartition(sourceParDeg).flatMap((line) => line.split("\n")).filter((line) => !line.isEmpty)
@@ -46,13 +51,13 @@ class FileParserSource() extends Serializable{
 
             val res = valueFieldKey match {
               case valueFieldKey if (valueFieldKey == DatasetParsing.TempField) =>
-                (splitWords(DatasetParsing.DeviceIdField).toString, splitWords(DatasetParsing.TempField).toDouble, timestamp)
+                (splitWords(DatasetParsing.DeviceIdField), splitWords(DatasetParsing.TempField).toDouble, timestamp)
               case valueFieldKey if (valueFieldKey == DatasetParsing.HumidField) =>
-                (splitWords(DatasetParsing.DeviceIdField).toString, splitWords(DatasetParsing.HumidField).toDouble, timestamp)
+                (splitWords(DatasetParsing.DeviceIdField), splitWords(DatasetParsing.HumidField).toDouble, timestamp)
               case valueFieldKey if (valueFieldKey == DatasetParsing.LightField) =>
-                (splitWords(DatasetParsing.DeviceIdField).toString, splitWords(DatasetParsing.LightField).toDouble, timestamp)
+                (splitWords(DatasetParsing.DeviceIdField), splitWords(DatasetParsing.LightField).toDouble, timestamp)
               case _ =>
-                (splitWords(DatasetParsing.DeviceIdField).toString, splitWords(DatasetParsing.VoltField).toDouble, timestamp)
+                (splitWords(DatasetParsing.DeviceIdField), splitWords(DatasetParsing.VoltField).toDouble, timestamp)
             }
 
             res
