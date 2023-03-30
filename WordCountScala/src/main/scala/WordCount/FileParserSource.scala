@@ -15,7 +15,6 @@ class FileParserSource(path: String, ssc: StreamingContext, parDegree: Int) {
     var timestamp = 0L
     try {
           val counter = ssc.sparkContext.longAccumulator
-
           val rdd = ssc.sparkContext.textFile(path)
 
           ssc.queueStream(
