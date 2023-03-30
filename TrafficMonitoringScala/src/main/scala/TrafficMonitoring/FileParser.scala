@@ -6,6 +6,7 @@ import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.dstream.DStream
 
 import java.io.FileNotFoundException
+import scala.collection.mutable.Queue
 
 class FileParser(path: String, ssc: StreamingContext, parDegree: Int, city: String) extends Serializable{
 //
@@ -13,8 +14,11 @@ class FileParser(path: String, ssc: StreamingContext, parDegree: Int, city: Stri
     var timestamp = 0L
     try {
       val counter = ssc.sparkContext.longAccumulator
+      val rdd = ssc.sparkContext.textFile(path)
 
-      ssc.textFileStream(path).transform({ rdd =>
+      ssc.queueStream(
+        Queue(rdd)
+      ).transform({ rdd =>
         //            val taskContext = TaskContext.get
         val startTime = System.nanoTime()
         //             val startMetrics = taskMetrics city == City.BEIJING &&
@@ -59,8 +63,8 @@ class FileParser(path: String, ssc: StreamingContext, parDegree: Int, city: Stri
 
         val elapsedTime = (endTime - startTime) / 1000000000.0
         val mbs: Double = (counter.sum / elapsedTime).toDouble
-        val formatted_mbs = String.format("%.5f", mbs)
-        Log.log.warn(s"[Source] bandwidth: $formatted_mbs MB/s")
+//        val formatted_mbs = String.format("%.5f", mbs)
+//        Log.log.warn(s"[Source] bandwidth: $formatted_mbs MB/s")
 
         res
       })

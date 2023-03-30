@@ -87,8 +87,8 @@ class SpeedCalculator(lines: DStream[(Int, Int, Long)], parDegree: Int) extends 
 
             val elapsedTime = (endTime - startTime) / 1000000000.0
             val mbs: Double = (counter.sum / elapsedTime).toDouble
-            val formatted_mbs = String.format("%.5f", mbs)
-            Log.log.warn(s"[Calculator] bandwidth: $formatted_mbs MB/s")
+//            val formatted_mbs = String.format("%.5f", mbs)
+//            Log.log.warn(s"[Calculator] bandwidth: $formatted_mbs MB/s")
 
             res
         })

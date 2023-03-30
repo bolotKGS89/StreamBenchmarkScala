@@ -36,8 +36,8 @@ class ConsoleSink(lines: DStream[(Int, Int, Int, Long)], genRate: Int, paralleli
 
             val elapsedTime = (endTime - startTime) / 1000000000.0
             val mbs: Double = (counter.sum / elapsedTime).toDouble
-            val formatted_mbs = String.format("%.5f", mbs)
-            Log.log.warn(s"[Console] bandwidth: $formatted_mbs MB/s")
+//            val formatted_mbs = String.format("%.5f", mbs)
+//            Log.log.warn(s"[Console] bandwidth: $formatted_mbs MB/s")
 
             res
         })
