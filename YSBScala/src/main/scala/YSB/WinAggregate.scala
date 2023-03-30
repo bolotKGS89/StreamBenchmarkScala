@@ -51,8 +51,8 @@ class WinAggregate {
 
       val elapsedTime = (endTime - startTime) / 1000000000.0
       val tuples: Double = (processed / elapsedTime).toDouble
-      val formattedTuples = String.format("%.5f", tuples)
-      Log.log.info(s"[WinAggregate] bandwidth: $formattedTuples tuples/sec")
+//      val formattedTuples = String.format("%.5f", tuples)
+//      Log.log.info(s"[WinAggregate] bandwidth: $formattedTuples tuples/sec")
 
       rddWithWindow
     })

@@ -59,8 +59,8 @@ class YSBSource() extends Serializable{
 
           val elapsedTime = (endTime - startTime) / 1000000000.0
           val tuples: Double = (generated / elapsedTime).toDouble
-          val formattedTuples = String.format("%.5f", tuples)
-          Log.log.info(s"[Source] bandwidth: $formattedTuples tuples/sec")
+//          val formattedTuples = String.format("%.5f", tuples)
+//          Log.log.info(s"[Source] bandwidth: $formattedTuples tuples/sec")
 
           res
         })

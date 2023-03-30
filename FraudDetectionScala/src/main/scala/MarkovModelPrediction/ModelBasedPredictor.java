@@ -23,10 +23,12 @@
 
 package MarkovModelPrediction;
 
+import java.io.Serializable;
+
 /**
  * Base class for all model based predictors
  * @author pranab
  */
-public abstract class ModelBasedPredictor {
+public abstract class ModelBasedPredictor implements Serializable {
     public abstract Prediction execute(String entityID, String record);
 }

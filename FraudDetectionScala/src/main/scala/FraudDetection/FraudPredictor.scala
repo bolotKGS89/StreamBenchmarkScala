@@ -18,8 +18,7 @@ class FraudPredictor extends Serializable {
       val startTime = System.nanoTime()
       val lines = rdd.repartition(predictorParDeg).map({ case(entityId, record, timestamp) => {
 
-        val strategy = predModel
-        if (strategy.eq("mm")) {
+        if (predModel.equals("mm")) {
           predictor = new MarkovModelPredictor()
         }
 
