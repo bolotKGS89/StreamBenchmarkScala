@@ -20,9 +20,9 @@ class FileParserSource() extends Serializable{
       "volt" -> DatasetParsing.VoltField
     )
     val valueFieldKey = fieldList.get(valueField).get
-    val counter = ssc.sparkContext.longAccumulator
 
     try {
+      val counter = ssc.sparkContext.longAccumulator
       val rdd = ssc.sparkContext.textFile(path)
 
       ssc.queueStream(
