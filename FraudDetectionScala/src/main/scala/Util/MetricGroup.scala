@@ -1,14 +1,14 @@
 package Util
 
 import java.io.IOException
-
-import scala.collection.mutable
+import scala.collection.mutable.Stack
+import scala.collection.mutable.HashMap
 
 object MetricGroup extends Serializable{
-  private val map: mutable.HashMap[String, mutable.Stack[Sampler]] = mutable.HashMap.empty
+  private val map: HashMap[String, Stack[Sampler]] = HashMap.empty
 
   def add(name: String, sampler: Sampler): Unit = {
-    val samplers = map.getOrElseUpdate(name, mutable.Stack.empty)
+    val samplers = map.getOrElseUpdate(name, Stack[Sampler]())
     samplers.push(sampler)
   }
 

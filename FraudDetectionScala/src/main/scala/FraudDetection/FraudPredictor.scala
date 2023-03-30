@@ -42,8 +42,8 @@ class FraudPredictor extends Serializable {
 
       val elapsedTime = (endTime - startTime) / 1000000000.0
       val mbs: Double = (counter.count / elapsedTime).toDouble
-      val formattedMbs = String.format("%.5f", mbs)
-      Log.log.warn(s"[Predictor] bandwidth: $formattedMbs MB/s")
+//      val formattedMbs = String.format("%.5f", mbs)
+//      Log.log.warn(s"[Predictor] bandwidth: $formattedMbs MB/s")
 
       lines
     })

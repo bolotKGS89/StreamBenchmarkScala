@@ -5,6 +5,7 @@ import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.dstream.DStream
 
 import java.io.FileNotFoundException
+import scala.collection.mutable.Queue
 
 class FileParserSpout(path: String, ssc: StreamingContext) {
 
@@ -12,8 +13,11 @@ class FileParserSpout(path: String, ssc: StreamingContext) {
 
     try {
       val counter = ssc.sparkContext.longAccumulator("Splitter accumulator")
+      val rdd = ssc.sparkContext.textFile(path)
 
-      ssc.textFileStream(path).transform({ rdd =>
+      ssc.queueStream(
+        Queue(rdd)
+      ).transform({ rdd =>
         val startTime = System.nanoTime()
         val res = rdd.repartition(sourceParDeg).map(line => {
           val splitLines = line.split(splitRegex, 2)
@@ -28,8 +32,8 @@ class FileParserSpout(path: String, ssc: StreamingContext) {
 
         val elapsedTime = (endTime - startTime) / 1000000000.0
         val mbs: Double = (counter.sum / elapsedTime).toDouble
-        val formattedMbs = String.format("%.5f", mbs)
-        Log.log.warn(s"[Source] bandwidth: $formattedMbs MB/s")
+//        val formattedMbs = String.format("%.5f", mbs)
+//        Log.log.warn(s"[Source] bandwidth: $formattedMbs MB/s")
 
         res
       })
