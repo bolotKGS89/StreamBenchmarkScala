@@ -1,14 +1,24 @@
 package Util.config
 
+import java.util.Properties
+
 class Configuration extends Serializable {
   val METRICS_ENABLED = "metrics.enabled"
   val METRICS_REPORTER = "metrics.reporter"
   val METRICS_INTERVAL_VALUE = "metrics.interval.value"
   val METRICS_INTERVAL_UNIT = "metrics.interval.unit"
   val METRICS_OUTPUT = "metrics.output"
+
+  private def getPropValue(key: String): String = {
+    val props = new Properties()
+    val resourceStream = getClass.getResourceAsStream("/tm.properties")
+    props.load(resourceStream)
+
+    props.getProperty(key)
+  }
   def getString(key: String): String = {
     var str: String = null
-    val obj = key
+    val obj = getPropValue(key)
     if (null != obj) {
       if (obj.isInstanceOf[String]) {
         str = obj.asInstanceOf[String]
@@ -33,7 +43,7 @@ class Configuration extends Serializable {
 
   def getInt(key: String): Int = {
     var str = 0
-    val obj = key
+    val obj = getPropValue(key)
     if (null != obj) if (obj.isInstanceOf[Integer]) str = obj.asInstanceOf[Integer]
     else if (obj.isInstanceOf[Number]) str = obj.asInstanceOf[Number].intValue
     else if (obj.isInstanceOf[String]) {
@@ -52,7 +62,7 @@ class Configuration extends Serializable {
 
   def getLong(key: String): Long = {
     var ans: Long = 0
-    val obj = key
+    val obj = getPropValue(key)
     if (null != obj) if (obj.isInstanceOf[Long]) ans = obj.asInstanceOf[Long]
     else if (obj.isInstanceOf[String]) try ans = obj.asInstanceOf[String].toLong
     catch {
@@ -76,13 +86,13 @@ class Configuration extends Serializable {
 
   def getDouble(key: String): Double = {
     var ans: Double = 0
-    val obj = key
+    val obj = getPropValue(key)
     if (obj != null) {
       if (obj.isInstanceOf[Double]) {
-        ans = obj.toDouble
+        return obj.toDouble
       } else if (obj.isInstanceOf[String]) {
         try {
-          ans = obj.asInstanceOf[String].toDouble
+          return obj.asInstanceOf[String].toDouble
         }
         catch {
           case ex: NumberFormatException =>
@@ -110,7 +120,7 @@ class Configuration extends Serializable {
 
   def getBoolean(key: String): Boolean = {
     var bool = false
-    val obj = key
+    val obj = getPropValue(key)
     if (null != obj) if (obj.isInstanceOf[Boolean]) bool = obj.asInstanceOf[Boolean]
     else if (obj.isInstanceOf[String]) bool = obj.asInstanceOf[String].toBoolean
     else throw new IllegalArgumentException("Boolean value not found  in configuration  for " + key)
