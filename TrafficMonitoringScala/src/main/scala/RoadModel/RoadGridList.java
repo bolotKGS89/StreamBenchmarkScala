@@ -48,7 +48,7 @@ import java.util.Map;
  *  The class defines a data structure containing information about the roads layer extracted from the shapefile.
  */
 public class RoadGridList implements Serializable {
-    private transient HashMap<String, ArrayList<SimpleFeature>> gridList = new HashMap<>();
+    private transient HashMap<String, ArrayList<SimpleFeature>> gridList;
     private String idKey;
     private String widthKey;
 

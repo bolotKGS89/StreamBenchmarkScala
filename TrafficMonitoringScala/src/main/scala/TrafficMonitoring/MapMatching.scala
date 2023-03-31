@@ -40,6 +40,10 @@ class MapMatching(lines: DStream[(String, Double, Double, Double, Int, Long)], p
         Log.log.
           debug(s"[MapMatch] Sectors:  $sectors Bounds ( $city case): [$minLat, $maxLat] [$minLon, $maxLon])")
 
+        if (sectors != null) {
+
+        }
+
         lines.transform({ rdd =>
             val startTime = System.nanoTime()
             val counter = rdd.sparkContext.longAccumulator
