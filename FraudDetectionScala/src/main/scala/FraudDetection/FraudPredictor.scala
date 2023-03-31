@@ -3,6 +3,8 @@ package FraudDetection
 import MarkovModelPrediction.{MarkovModelPredictor, ModelBasedPredictor}
 import org.apache.spark.streaming.dstream.DStream
 import Util.Log
+import Util.config.Configuration
+import org.apache.hadoop.fs.Path
 import org.apache.commons.lang.StringUtils
 import org.apache.spark.streaming.StreamingContext
 
@@ -16,6 +18,7 @@ class FraudPredictor extends Serializable {
 
     lines.transform({ rdd =>
       val startTime = System.nanoTime()
+
       val lines = rdd.repartition(predictorParDeg).map({ case(entityId, record, timestamp) => {
 
         if (predModel.equals("mm")) {

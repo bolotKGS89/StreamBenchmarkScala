@@ -63,6 +63,7 @@ public class MarkovModelPredictor extends ModelBasedPredictor {
 
     public MarkovModelPredictor() {
         Configuration conf = new Configuration();
+
         String mmKey = conf.getString(FraudDetectionConstants.MARKOV_MODEL_KEY(), null);
         String model;
 

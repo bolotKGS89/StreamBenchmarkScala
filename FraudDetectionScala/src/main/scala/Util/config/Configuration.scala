@@ -1,5 +1,10 @@
 package Util.config
 
+import FraudDetection.SparkFraudDetection.getClass
+
+import java.util.Properties
+import scala.io.Source
+
 class Configuration {
   val METRICS_ENABLED = "metrics.enabled"
   val METRICS_REPORTER = "metrics.reporter"
@@ -7,9 +12,18 @@ class Configuration {
   val METRICS_INTERVAL_UNIT = "metrics.interval.unit"
   val METRICS_OUTPUT = "metrics.output"
 
+  private def getPropValue(key: String): String = {
+    val props = new Properties()
+    val resourceStream = getClass.getResourceAsStream("/fd.properties")
+    props.load(resourceStream)
+
+    props.getProperty(key)
+  }
+
   def getString(key: String): String = {
     var str: String = null
-    val obj = key
+    val obj = getPropValue(key)
+
     if (null != obj) {
       if (obj.isInstanceOf[String]) {
         str = obj.asInstanceOf[String]
@@ -34,7 +48,7 @@ class Configuration {
 
   def getInt(key: String): Int = {
     var str = 0
-    val obj = key
+    val obj = getPropValue(key)
     if (null != obj) if (obj.isInstanceOf[Integer]) str = obj.asInstanceOf[Integer]
     else if (obj.isInstanceOf[Number]) str = obj.asInstanceOf[Number].intValue
     else if (obj.isInstanceOf[String]) {
@@ -53,7 +67,7 @@ class Configuration {
 
   def getLong(key: String): Long = {
     var ans:Long = 0
-    val obj = key
+    val obj = getPropValue(key)
     if (null != obj) if (obj.isInstanceOf[Long]) ans = obj.asInstanceOf[Long]
     else if (obj.isInstanceOf[String]) try ans = obj.asInstanceOf[String].toLong
     catch {
@@ -76,14 +90,13 @@ class Configuration {
   }
 
   def getDouble(key: String): Double = {
-    var ans:Double = 0
-    val obj = key
+    val obj = getPropValue(key)
     if(obj != null) {
       if (obj.isInstanceOf[Double]) {
-        ans = obj.toDouble
+        return obj.toDouble
       } else if (obj.isInstanceOf[String]) {
         try {
-          ans = obj.asInstanceOf[String].toDouble
+          return obj.trim.toDouble
         }
         catch {
           case ex: NumberFormatException =>
@@ -94,9 +107,6 @@ class Configuration {
     } else {
       throw new IllegalArgumentException("Nothing found in configuration for " + key)
     }
-
-
-    ans
   }
 
   def getDouble(key: String, defined: Double): Double = {
@@ -111,7 +121,7 @@ class Configuration {
 
   def getBoolean(key: String): Boolean = {
     var bool = false
-    val obj = key
+    val obj = getPropValue(key)
     if (null != obj) if (obj.isInstanceOf[Boolean]) bool = obj.asInstanceOf[Boolean]
     else if (obj.isInstanceOf[String]) bool = obj.asInstanceOf[String].toBoolean
     else throw new IllegalArgumentException("Boolean value not found  in configuration  for " + key)
@@ -164,5 +174,7 @@ class Configuration {
     }
     map
   }
+
+
 
 }
