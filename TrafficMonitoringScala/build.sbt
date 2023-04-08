@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   "org.apache.logging.log4j" %% "log4j-api-scala" % "12.0",
   "org.apache.logging.log4j" % "log4j-core" % "2.20.0",
   "org.geotools" % "gt-shapefile" % "25.0",
-  "org.postgis" % "postgis-jdbc" % "1.3.3"
+  "org.geotools" % "gt-xml" % "11.0"
 )
 
 lazy val root = (project in file("."))

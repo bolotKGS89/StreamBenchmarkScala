@@ -24,6 +24,7 @@
 package MarkovModelPrediction;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -33,7 +34,7 @@ import java.nio.file.Paths;
  *
  * @author mayconbordin
  */
-public class MarkovModelFileSource implements IMarkovModelSource {
+public class MarkovModelFileSource implements IMarkovModelSource, Serializable {
     private Charset charset;
 
     public MarkovModelFileSource() {

@@ -38,8 +38,8 @@ import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  *  @author Alessandra Fais
@@ -48,7 +48,7 @@ import java.util.Map;
  *  The class defines a data structure containing information about the roads layer extracted from the shapefile.
  */
 public class RoadGridList implements Serializable {
-    private transient HashMap<String, ArrayList<SimpleFeature>> gridList;
+    private ConcurrentHashMap<String, ArrayList<SimpleFeature>> gridList = new ConcurrentHashMap<String, ArrayList<SimpleFeature>>();
     private String idKey;
     private String widthKey;
 
@@ -163,7 +163,7 @@ public class RoadGridList implements Serializable {
      *  @param mapID coordinates <X, Y>
      *  @return true if an entry associated to the key mapID already exists, false otherwise
      */
-    private Boolean exists(HashMap<String, ArrayList<SimpleFeature>> gridList, String mapID) {
+    private Boolean exists(ConcurrentHashMap<String, ArrayList<SimpleFeature>> gridList, String mapID) {
         for (Map.Entry<String, ArrayList<SimpleFeature>> g : gridList.entrySet()) {
             if (g.getKey().equals(mapID)) {
                 return true;
@@ -179,7 +179,7 @@ public class RoadGridList implements Serializable {
      *  @throws IOException
      *  @throws SQLException
      */
-    private HashMap<String, ArrayList<SimpleFeature>> read(String path) throws IOException, SQLException {
+    private ConcurrentHashMap<String, ArrayList<SimpleFeature>> read(String path) throws IOException, SQLException {
         File file = new File(path);
         // System.out.println("File: " + file);
 

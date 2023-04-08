@@ -1,6 +1,6 @@
 package TrafficMonitoring
 
-import Constants.TrafficMonitoringConstants.{City, Conf}
+import Constants.TrafficMonitoringConstants.City
 import Util.Log
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
@@ -72,7 +72,7 @@ object Main {
 
     val consoleLines = new ConsoleSink(speedCalculatorLines, genRate, sinkParDeg, sampling).execute()
 
-    consoleLines.print(10)
+    consoleLines.print(500)
 
     ssc.start()
     ssc.awaitTermination()

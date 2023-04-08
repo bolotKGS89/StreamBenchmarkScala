@@ -12,12 +12,11 @@ class Filter extends Serializable{
       stream.transform({ rdd =>
         val startTime = System.nanoTime()
 
-        val res = rdd.repartition(parDegree).filter((campaign) => {
+        val res = rdd.repartition(parDegree).filter{ case (uuid, uuid2, adId, adType, eventType, ts, ip) =>
           processed += 1
-          campaign._5.equals("view")
-        })
+          eventType.equals("view")
+        }
 
-        processed += 1
         val endTime = System.nanoTime()
         val latency = endTime - startTime // Measure the time it took to process the data
         Log.log.info(s"[Filter] latency: $latency")

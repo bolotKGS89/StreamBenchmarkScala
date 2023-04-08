@@ -75,7 +75,8 @@ object SparkSpikeDetection {
     // sampling should be cmd argument
     val output = new ConsoleSink(sampling).print(filteredTuples, sinkParDeg)
 
-    output.print(100)
+    output.print(20)
+
 
     ssc.start()
     ssc.awaitTermination()

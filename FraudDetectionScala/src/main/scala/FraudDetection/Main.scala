@@ -51,7 +51,7 @@ object SparkFraudDetection
     }
 
     val props = new Properties()
-    val resourceStream = getClass.getResourceAsStream("/fd.properties")
+    val resourceStream = getClass.getResourceAsStream("/frauddetection/fd.properties")
     props.load(resourceStream)
 
     val inputFile = props.getProperty("fd.spout.path")
@@ -65,11 +65,12 @@ object SparkFraudDetection
 
     //2nd stage
     val outlierLines = new FraudPredictor().execute(lines, ssc, predModel, predictorParDeg)
+//    outlierLines.print(100)
 
     //3rd stage
     // sampling should be cmd argument
-    val output = new ConsoleSink(sampling).print(outlierLines, sinkParDeg)
-    output.print(100)
+//    val output = new ConsoleSink(sampling).print(outlierLines, sinkParDeg)
+//    output.print(100)
 
     ssc.start()
     ssc.awaitTermination()

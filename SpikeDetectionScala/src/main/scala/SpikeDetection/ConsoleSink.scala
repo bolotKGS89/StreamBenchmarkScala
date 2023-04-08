@@ -17,6 +17,9 @@ class ConsoleSink(samplingRate: Long) {
           val now = System.nanoTime
           latency.add((now - timestamp).toDouble / 1e3, now)
           processed += 1
+//          if (processed <= 20)
+//            System.out.println("deviceID " + deviceId + " moving_avg_instant " + movingAvgInstant + " next_property_value " + nextPropertyValue)
+
           (deviceId, movingAvgInstant, nextPropertyValue, timestamp)
         }})
 

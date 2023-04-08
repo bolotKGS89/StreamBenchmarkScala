@@ -83,11 +83,11 @@ object SparkYSB {
 
     val winAggregateStream = new Joiner().doJoin(joinedStream, campaignLookup, joiner_par_deg)
 
-    val consoleSinkStream = new WinAggregate().doWinAggregate(winAggregateStream, agg_par_deg, initialTime)
+    val consoleSinkStream = new WinAggregate().doWinAggregate(winAggregateStream, agg_par_deg, initialTime).print(100)
 
-    val endStream = new ConsoleSink().doConsole(consoleSinkStream, sink_par_deg, sampling)
-
-    endStream.print(100)
+//    val endStream = new ConsoleSink().doConsole(consoleSinkStream, sink_par_deg, sampling)
+//
+//    endStream.print(100)
 
     ssc.start()
     ssc.awaitTermination()

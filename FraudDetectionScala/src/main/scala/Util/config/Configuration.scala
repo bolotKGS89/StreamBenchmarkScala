@@ -14,7 +14,7 @@ class Configuration {
 
   private def getPropValue(key: String): String = {
     val props = new Properties()
-    val resourceStream = getClass.getResourceAsStream("/fd.properties")
+    val resourceStream = getClass.getResourceAsStream("/frauddetection/fd.properties")
     props.load(resourceStream)
 
     props.getProperty(key)

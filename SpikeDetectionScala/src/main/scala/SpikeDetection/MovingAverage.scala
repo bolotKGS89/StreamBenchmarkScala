@@ -15,7 +15,8 @@ class MovingAverage() extends Serializable {
 
     tuples.transform({ rdd =>
       val startTime = System.nanoTime()
-      val res = rdd.repartition(mvgAvgParDeg).map({ case(deviceId, nextPropertyValue, timestamp) => {
+      val res = rdd.repartition(mvgAvgParDeg)
+        .map({ case(deviceId, nextPropertyValue, timestamp) =>
 
         val movingAverageInstant = movingAverage(deviceId, nextPropertyValue)
         processed += 1
@@ -24,11 +25,15 @@ class MovingAverage() extends Serializable {
           + movingAverageInstant + ", next_value "
           + nextPropertyValue + ", ts " + timestamp)
 
+//          if(processed <= 20) {
+//            System.out.println(deviceId + " " + movingAverageInstant + " " + nextPropertyValue)
+//          }
+
         (deviceId, movingAverageInstant, nextPropertyValue, timestamp)
-      }}) // ending should be done
-      val endTime = System.nanoTime
-      val latency = endTime - startTime // Measure the time it took to process the data
-      Log.log.warn(s"[Average] latency: $latency")
+      }) // ending should be done
+//      val endTime = System.nanoTime
+//      val latency = endTime - startTime // Measure the time it took to process the data
+//      Log.log.warn(s"[Average] latency: $latency")
 
       res
     })
@@ -47,7 +52,7 @@ class MovingAverage() extends Serializable {
     val deviceIDtoStreamMap: util.Map[String, util.LinkedList[Double]] = new util.HashMap[String, util.LinkedList[Double]]
     val deviceIDtoSumOfEvents: util.Map[String, Double] = new util.HashMap[String, Double]
     var sum: Double = 0.0
-    var movingAverageWindow = 1000
+    val movingAverageWindow = 1000
 
     if (deviceIDtoStreamMap.containsKey(deviceId)) {
       valueList = deviceIDtoStreamMap.get(deviceId)

@@ -24,41 +24,37 @@ class MapMatching(lines: DStream[(String, Double, Double, Double, Int, Long)], p
         val minLon = config.getDouble(Conf.MAP_MATCHER_BEIJING_MIN_LON, 116.105789)
         val maxLon = config.getDouble(Conf.MAP_MATCHER_BEIJING_MAX_LON, 116.670021)
         var sectors: RoadGridList = null
+        try {
+          sectors = new RoadGridList(config, cityShapefile)
+        } catch {
+          case _: SQLException | _: IOException =>
+            throw new RuntimeException(s"Error while loading shape file")
+        }
+
 
         var dif_keys = 0
         var all_keys = 0
         var processed = 0
 
-        try {
-            sectors = new RoadGridList(config, cityShapefile)
-        } catch {
-            case _: SQLException | _: IOException => {
-                throw new RuntimeException(s"Error while loading shape file")
-            }
-        }
-
-        Log.log.
-          debug(s"[MapMatch] Sectors:  $sectors Bounds ( $city case): [$minLat, $maxLat] [$minLon, $maxLon])")
-
-        if (sectors != null) {
-
-        }
+//        Log.log.
+//          debug(s"[MapMatch] Sectors:  $sectors Bounds ( $city case): [$minLat, $maxLat] [$minLon, $maxLon])")
+//          .filter({ case (_, latitude, longitude, speed, bearing, _) =>
+//              val record = new GPSRecord(longitude, latitude, speed, bearing)
+//              val roadID = sectors.fetchRoadID(record)
+//              if (roadID != 1) true else false
+//          }).
 
         lines.transform({ rdd =>
             val startTime = System.nanoTime()
             val counter = rdd.sparkContext.longAccumulator
 
             val res = rdd.repartition(parDegree)
-              .filter({ case (vehicleID, latitude, longitude, speed, bearing, timestamp) => {
+              .filter({ case (vehicleID, latitude, longitude, speed, bearing, timestamp) =>
                 Log.log.debug(s"[MapMatch] tuple: vehicleID $vehicleID, lat $latitude, lon $longitude, " +
                   s"speed $speed, dir $bearing, ts $timestamp")
                 processed += 1
                 (speed > 0) && (longitude < maxLon || longitude > minLon || latitude < maxLat || latitude > minLat)
-              }}).filter({ case (vehicleID, latitude, longitude, speed, bearing, timestamp) => {
-                val record = new GPSRecord(longitude, latitude, speed, bearing)
-                val roadID = sectors.fetchRoadID(record)
-                if (roadID != 1) true else false
-              }}).map({ case (_, latitude, longitude, speed, bearing, timestamp) => {
+              }).map({ case (_, latitude, longitude, speed, bearing, timestamp) =>
                 try {
                     val record = new GPSRecord(longitude, latitude, speed, bearing)
                     val roadID = sectors.fetchRoadID(record)
@@ -73,11 +69,10 @@ class MapMatching(lines: DStream[(String, Double, Double, Double, Int, Long)], p
                     all_keys += 1
                     (roadID, speed.toInt, timestamp)
                 } catch {
-                    case e: SQLException => {
+                    case e: SQLException =>
                         throw new RuntimeException("Unable to fetch road ID", e)
-                    }
                 }
-            }})
+            })
 
             val endTime = System.nanoTime()
             //             val endMetrics = taskMetrics

@@ -28,6 +28,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.nio.charset.Charset;
 
@@ -35,7 +36,7 @@ import java.nio.charset.Charset;
  *
  * @author mayconbordin
  */
-public class MarkovModelResourceSource implements IMarkovModelSource {
+public class MarkovModelResourceSource implements IMarkovModelSource, Serializable {
     private static final Logger LOG = LoggerFactory.getLogger(MarkovModelResourceSource.class);
     private Charset charset;
 

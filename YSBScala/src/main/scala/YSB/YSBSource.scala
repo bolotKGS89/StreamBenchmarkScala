@@ -19,7 +19,7 @@ class YSBSource() extends Serializable{
     val adTypeLength = AD_TYPES.size
     val eventTypeLength = EVENT_TYPES.size
     val campaignLength = campaigns.size
-    val uuid = UUID.randomUUID.toString;
+    val uuid = UUID.randomUUID.toString; // used as a dummy value for all events, based on ref code
     var i = 0
     var j = 0
     var k = 0
@@ -44,12 +44,14 @@ class YSBSource() extends Serializable{
             if (j >= adTypeLength) j = 0
             if (k >= eventTypeLength) k = 0
             ts = initTime + (System.nanoTime - initTime)
-            val ad_id = campaign.ad_id // ad id for the current event index
+            val ad_id = campaigns(i).ad_id // ad id for the current event index
             val ad_type = AD_TYPES(j) // current adtype for event index
             val event_type = EVENT_TYPES(k) // current event type for event index
             val ip = "255.255.255.255"
             generated += 1
             lastTime = System.nanoTime
+
+//            System.out.println("uuid " + uuid + " ad_id " + ad_id + " ad_type " + ad_type + " event_type " + event_type)
             (uuid, uuid, ad_id, ad_type, event_type, ts, ip)
           })
 

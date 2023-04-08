@@ -3,7 +3,7 @@ package Constants
 object TrafficMonitoringConstants extends BaseConstants  {
   val DEFAULT_PROPERTIES = "/trafficmonitoring/tm.properties"
   val DEFAULT_TOPO_NAME = "TrafficMonitoring"
-  val BEIJING_SHAPEFILE = "/home/bolot/Documents/Thesis/StreamBenchmarks/Datasets/TM/beijing/roads.shp"
+  val BEIJING_SHAPEFILE = "../../Datasets/TM/beijing/roads.shp"
 
   object Conf extends Serializable {
     val RUNTIME = "tm.runtime_sec"
