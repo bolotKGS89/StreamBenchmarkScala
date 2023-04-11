@@ -58,19 +58,18 @@ object SparkFraudDetection
     val predModel = props.getProperty("fd.predictor.model")
 
     val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkFraudDetection")
-    val ssc = new StreamingContext(sparkConf, Seconds(5))
+    val ssc = new StreamingContext(sparkConf, Seconds(15))
 
     //1st stage
     val lines = new FileParserSpout(inputFile, ssc).parseDataSet(",", sourceParDeg)
 
     //2nd stage
     val outlierLines = new FraudPredictor().execute(lines, ssc, predModel, predictorParDeg)
-//    outlierLines.print(100)
 
     //3rd stage
     // sampling should be cmd argument
-//    val output = new ConsoleSink(sampling).print(outlierLines, sinkParDeg)
-//    output.print(100)
+    val output = new ConsoleSink(sampling).print(outlierLines, sinkParDeg)
+    output.print(100)
 
     ssc.start()
     ssc.awaitTermination()

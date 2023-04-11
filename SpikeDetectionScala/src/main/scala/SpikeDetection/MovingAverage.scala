@@ -15,22 +15,34 @@ class MovingAverage() extends Serializable {
 
     tuples.transform({ rdd =>
       val startTime = System.nanoTime()
-      val res = rdd.repartition(mvgAvgParDeg)
-        .map({ case(deviceId, nextPropertyValue, timestamp) =>
+      val res = rdd.repartition(mvgAvgParDeg).groupBy(_._1).flatMap { iter =>
+        iter._2.map { case(deviceId, nextPropertyValue, timestamp) =>
+          val movingAverageInstant = movingAverage(deviceId, nextPropertyValue)
+          processed += 1
+//          if(processed <= 20) {
+//              System.out.println(deviceId + " " + movingAverageInstant + " " + nextPropertyValue)
+//          }
 
-        val movingAverageInstant = movingAverage(deviceId, nextPropertyValue)
-        processed += 1
-        Log.log.debug("[Average] tuple: deviceID "
-          + deviceId + ", incremental_average "
-          + movingAverageInstant + ", next_value "
-          + nextPropertyValue + ", ts " + timestamp)
+          (deviceId, movingAverageInstant, nextPropertyValue, timestamp)
+        }
+      }
 
+
+//        .map({ case(deviceId, nextPropertyValue, timestamp) =>
+//
+//        val movingAverageInstant = movingAverage(deviceId, nextPropertyValue)
+//        processed += 1
+//        Log.log.debug("[Average] tuple: deviceID "
+//          + deviceId + ", incremental_average "
+//          + movingAverageInstant + ", next_value "
+//          + nextPropertyValue + ", ts " + timestamp)
+//
 //          if(processed <= 20) {
 //            System.out.println(deviceId + " " + movingAverageInstant + " " + nextPropertyValue)
 //          }
-
-        (deviceId, movingAverageInstant, nextPropertyValue, timestamp)
-      }) // ending should be done
+//
+//        (deviceId, movingAverageInstant, nextPropertyValue, timestamp)
+//      }) // ending should be done
 //      val endTime = System.nanoTime
 //      val latency = endTime - startTime // Measure the time it took to process the data
 //      Log.log.warn(s"[Average] latency: $latency")

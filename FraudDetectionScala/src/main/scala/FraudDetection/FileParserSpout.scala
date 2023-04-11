@@ -23,7 +23,7 @@ class FileParserSpout(path: String, ssc: StreamingContext) {
           val splitLines = line.split(splitRegex, 2)
           counter.add(line.getBytes.length)
           val timestamp = System.nanoTime
-          (splitLines(0), splitLines(1), timestamp)
+          (splitLines(0).trim, splitLines(1).trim, timestamp)
         })
 
         val endTime = System.nanoTime()
