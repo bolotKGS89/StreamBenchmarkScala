@@ -14,14 +14,16 @@ class SpikeDetection extends Serializable {
 
     tuples.transform({ rdd =>
       val startTime = System.nanoTime()
-        rdd.repartition(counterParDeg).flatMap({ case (deviceId, movingAvgInstant, nextPropertyValue, timestamp) =>
+        rdd.repartition(counterParDeg).map({ case (deviceId, movingAvgInstant, nextPropertyValue, timestamp) =>
           if (Math.abs(nextPropertyValue - movingAvgInstant) > spikeThreshold * movingAvgInstant) {
             spikes += 1
-            Some((deviceId, movingAvgInstant, movingAvgInstant, timestamp))
+
+            (deviceId, movingAvgInstant, movingAvgInstant, timestamp)
           } else {
-            None
+
+            null
           }
-        })
+        }).filter(_ != null)
     })
   }
 }

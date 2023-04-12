@@ -15,34 +15,21 @@ class MovingAverage() extends Serializable {
 
     tuples.transform({ rdd =>
       val startTime = System.nanoTime()
-      val res = rdd.repartition(mvgAvgParDeg).groupBy(_._1).flatMap { iter =>
-        iter._2.map { case(deviceId, nextPropertyValue, timestamp) =>
-          val movingAverageInstant = movingAverage(deviceId, nextPropertyValue)
-          processed += 1
-//          if(processed <= 20) {
-//              System.out.println(deviceId + " " + movingAverageInstant + " " + nextPropertyValue)
-//          }
+      var deviceIDtoStreamMap: util.HashMap[String, util.LinkedList[Double]] = new util.HashMap[String, util.LinkedList[Double]]
+      var deviceIDtoSumOfEvents: util.HashMap[String, Double] = new util.HashMap[String, Double]
 
-          (deviceId, movingAverageInstant, nextPropertyValue, timestamp)
-        }
-      }
+      val res = rdd.repartition(mvgAvgParDeg).map({ case(deviceId, nextPropertyValue, timestamp) =>
 
+        val movingAverageInstant = movingAverage(deviceId, nextPropertyValue, deviceIDtoStreamMap, deviceIDtoSumOfEvents)
+        processed += 1
+        Log.log.debug("[Average] tuple: deviceID "
+          + deviceId + ", incremental_average "
+          + movingAverageInstant + ", next_value "
+          + nextPropertyValue + ", ts " + timestamp)
 
-//        .map({ case(deviceId, nextPropertyValue, timestamp) =>
-//
-//        val movingAverageInstant = movingAverage(deviceId, nextPropertyValue)
-//        processed += 1
-//        Log.log.debug("[Average] tuple: deviceID "
-//          + deviceId + ", incremental_average "
-//          + movingAverageInstant + ", next_value "
-//          + nextPropertyValue + ", ts " + timestamp)
-//
-//          if(processed <= 20) {
-//            System.out.println(deviceId + " " + movingAverageInstant + " " + nextPropertyValue)
-//          }
-//
-//        (deviceId, movingAverageInstant, nextPropertyValue, timestamp)
-//      }) // ending should be done
+        (deviceId, movingAverageInstant, nextPropertyValue, timestamp)
+      })
+      // ending should be done
 //      val endTime = System.nanoTime
 //      val latency = endTime - startTime // Measure the time it took to process the data
 //      Log.log.warn(s"[Average] latency: $latency")
@@ -59,10 +46,11 @@ class MovingAverage() extends Serializable {
   }
 
 
-  private def movingAverage(deviceId: String, nextDouble: Double): Double = {
+  private def movingAverage(deviceId: String, nextDouble: Double,
+                            deviceIDtoStreamMap: util.HashMap[String, util.LinkedList[Double]],
+                            deviceIDtoSumOfEvents: util.HashMap[String, Double]): Double = {
     var valueList: util.LinkedList[Double] = new util.LinkedList[Double]
-    val deviceIDtoStreamMap: util.Map[String, util.LinkedList[Double]] = new util.HashMap[String, util.LinkedList[Double]]
-    val deviceIDtoSumOfEvents: util.Map[String, Double] = new util.HashMap[String, Double]
+
     var sum: Double = 0.0
     val movingAverageWindow = 1000
 

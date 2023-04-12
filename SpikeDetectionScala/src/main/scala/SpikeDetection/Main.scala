@@ -69,13 +69,13 @@ object SparkSpikeDetection {
     val avgTuples = new MovingAverage().execute(tuples, mvgAvgParDeg)
 
     //3rd stage
-    val filteredTuples = new SpikeDetection().execute(avgTuples, counterParDeg, spikeThreshold)
+    val filteredTuples = new SpikeDetection().execute(avgTuples, counterParDeg, spikeThreshold).print(20)
 
-    //4th stage
-    // sampling should be cmd argument
-    val output = new ConsoleSink(sampling).print(filteredTuples, sinkParDeg)
+//    //4th stage
+//    // sampling should be cmd argument
+//    val output = new ConsoleSink(sampling).print(filteredTuples, sinkParDeg)
 
-    output.print(20)
+//    output.print(20)
 
 
     ssc.start()
