@@ -23,11 +23,13 @@
 
 package MarkovModelPrediction;
 
+import java.io.Serializable;
+
 /**
  *
  * @author mayconbordin
  */
-public class Prediction {
+public class Prediction implements Serializable {
     private String entityId;
     private double score;
     private String[] states;

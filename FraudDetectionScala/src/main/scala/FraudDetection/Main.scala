@@ -57,19 +57,21 @@ object SparkFraudDetection
     val inputFile = props.getProperty("fd.spout.path")
     val predModel = props.getProperty("fd.predictor.model")
 
-    val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkFraudDetection")
-    val ssc = new StreamingContext(sparkConf, Seconds(15))
+    val sparkConf = new SparkConf().setMaster("local[*]")
+                    .setAppName("SparkFraudDetection")
+                    .set("spark.streaming.receiver.maxRate", "32768")
+    val ssc = new StreamingContext(sparkConf, Seconds(20))
 
     //1st stage
     val lines = new FileParserSpout(inputFile, ssc).parseDataSet(",", sourceParDeg)
 
     //2nd stage
-    val outlierLines = new FraudPredictor().execute(lines, ssc, predModel, predictorParDeg)
+    val outlierLines = new FraudPredictor().execute(lines, ssc, predModel, predictorParDeg).print(70)
 
     //3rd stage
     // sampling should be cmd argument
-    val output = new ConsoleSink(sampling).print(outlierLines, sinkParDeg)
-    output.print(100)
+//    val output = new ConsoleSink(sampling).print(outlierLines, sinkParDeg)
+//    output.print(100)
 
     ssc.start()
     ssc.awaitTermination()

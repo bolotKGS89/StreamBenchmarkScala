@@ -23,6 +23,10 @@ class FileParserSpout(path: String, ssc: StreamingContext) {
           val splitLines = line.split(splitRegex, 2)
           counter.add(line.getBytes.length)
           val timestamp = System.nanoTime
+//          if(counter.count < 20) {
+//            System.out.println("entityId " + splitLines(0).trim + " record " + splitLines(1).trim + " ts " + timestamp);
+//          }
+
           (splitLines(0).trim, splitLines(1).trim, timestamp)
         })
 

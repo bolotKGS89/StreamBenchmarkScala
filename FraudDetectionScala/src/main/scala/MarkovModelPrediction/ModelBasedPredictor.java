@@ -23,7 +23,7 @@
 
 package MarkovModelPrediction;
 
-import java.io.Serializable;
+import java.util.List;
 
 /**
  * Base class for all model based predictors

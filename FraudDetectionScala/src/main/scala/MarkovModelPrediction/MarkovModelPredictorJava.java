@@ -50,7 +50,7 @@ public class MarkovModelPredictorJava extends ModelBasedPredictor implements Ser
     };
 
     private MarkovModel markovModel;
-    private final Map<String, List<String>> records = new HashMap<>();
+    private Map<String, List<String>> records = new HashMap<>();
     private boolean localPredictor;
     private int stateSeqWindowSize;
     private int stateOrdinal;
@@ -134,15 +134,10 @@ public class MarkovModelPredictorJava extends ModelBasedPredictor implements Ser
     public Prediction execute(String entityID, String record) {
         double score = 0;
 
-        List<String> recordSeq = records.get(entityID);
-        if (null == recordSeq) {
-            recordSeq = new ArrayList<>();
-            records.put(entityID, recordSeq);
-        }
+        List<String> recordSeq = records.computeIfAbsent(entityID, k -> new ArrayList<>());
 
         //add and maintain size
         recordSeq.add(record);
-
         if (recordSeq.size() > stateSeqWindowSize) {
             recordSeq.remove(0);
         }
