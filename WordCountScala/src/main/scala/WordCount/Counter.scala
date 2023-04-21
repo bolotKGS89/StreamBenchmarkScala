@@ -19,6 +19,7 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
           counter.add(word.getBytes.length)
 
           val now = System.nanoTime
+//          System.out.println("then " + (now - timestamp).toDouble / 1e3 + " now " + now)
           sampler.add((now - timestamp).toDouble / 1e3, now)
 
           (word, count)

@@ -58,7 +58,7 @@ public class Sampler implements Serializable {
     public void add(double value, long timestamp) {
         total++;
         // add samples according to the sample rate
-        System.out.println("value " + value + " timestamp " + timestamp);
+//        System.out.println("value " + value + " timestamp " + timestamp);
         double seconds = (timestamp - epoch) / 1e9;
         if (samplesPerSeconds == 0 || counter <= samplesPerSeconds * seconds) {
             samples.add(value);
