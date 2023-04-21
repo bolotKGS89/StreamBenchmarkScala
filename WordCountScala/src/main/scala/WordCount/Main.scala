@@ -2,6 +2,7 @@ package WordCount
 
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import Util.Log
+import Util.MetricGroup
 import org.apache.spark.SparkConf
 
 import java.util.Properties
@@ -69,15 +70,15 @@ object SparkWordCount {
     val words = new Splitter(lines, ssc, splitterParDeg).execute()
     //3rd stage
     val wordCounts = new Counter(words, ssc, sampling, counterParDeg).count()
-    //4th stage
-    // Should I use
-
-    // Should I use MetricGroup and write them in .json
 
     wordCounts.print(100)
+    Log.log.info("Dumping metrics")
+    MetricGroup.dumpAll()
 
     ssc.start()
-    ssc.awaitTermination()
+    ssc.awaitTerminationOrTimeout(60000)
+
+    ssc.stop(stopSparkContext = true, stopGracefully = true)
 
   }
 

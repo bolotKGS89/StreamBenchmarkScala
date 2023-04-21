@@ -9,10 +9,8 @@ import java.io.{File, IOException}
 
 class Metric(var name: String) // constructor
   extends Serializable {
-  fileName = String.format("metric_%s.json", name)
-  descriptiveStatistics = new DescriptiveStatistics
-  private var fileName: String = null
-  private var descriptiveStatistics: DescriptiveStatistics = null
+  private var fileName: String = String.format("metric_%s.json", name)
+  private var descriptiveStatistics: DescriptiveStatistics = new DescriptiveStatistics
   private var total = 0L
 
   // add method

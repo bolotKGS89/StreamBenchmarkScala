@@ -2,7 +2,7 @@ package WordCount
 
 import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.dstream.DStream
-import Util.{Log, MetricsCollector, Sampler}
+import Util.{Log, MetricGroup, MetricsCollector, Sampler}
 
 
 class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, samplingRate: Long, parDegree: Int) {
@@ -15,14 +15,14 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
       val startTime = System.nanoTime()
       val sampler = new Sampler(samplingRate)
 
-      val res = rdd.repartition(parDegree).map({ case(word, count, timestamp) => { // might be wrong use
+      val res = rdd.map{ case(word, count, timestamp) =>  // might be wrong use
           counter.add(word.getBytes.length)
 
           val now = System.nanoTime
           sampler.add((now - timestamp).toDouble / 1e3, now)
 
           (word, count)
-      }})
+      }
 
       val endTime = System.nanoTime()
       val latency = endTime - startTime // Measure the time it took to process the data
@@ -32,6 +32,8 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
       val mbs: Double = (counter.sum / elapsedTime).toDouble
 //      val formattedMbs = String.format("%.5f", mbs)
 //      Log.log.info(s"[Counter] bandwidth: $formattedMbs MB/s")
+
+      MetricGroup.add("latency", sampler)
 
       //            val endMetrics = taskMetrics
       //            val latency = taskContext.taskMetrics.executorRunTime
@@ -45,6 +47,6 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
 
 
       res
-    })
+    }).repartition(parDegree)
   }
 }

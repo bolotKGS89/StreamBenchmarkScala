@@ -8,6 +8,7 @@ import org.apache.spark.streaming.dstream.DStream
 
 import scala.collection.mutable.ListBuffer
 import java.io.FileNotFoundException
+import scala.collection.mutable
 import scala.collection.mutable.Queue
 
 class FileParserSource() extends Serializable{
@@ -19,20 +20,20 @@ class FileParserSource() extends Serializable{
       "light" -> DatasetParsing.LightField,
       "volt" -> DatasetParsing.VoltField
     )
-    val valueFieldKey = fieldList.get(valueField).get
+    val valueFieldKey = fieldList(valueField)
 
     try {
       val counter = ssc.sparkContext.longAccumulator
-      val rdd = ssc.sparkContext.textFile(path)
+      val textFile = ssc.sparkContext.textFile(path)
 
       ssc.queueStream(
-        Queue(rdd)
+        mutable.Queue(textFile)
       ).transform({ rdd =>
         val startTime = System.nanoTime()
 
-        val words = rdd.repartition(sourceParDeg).flatMap((line) => line.split("\n")).filter((line) => !line.isEmpty)
-          .map(word => word.split("\\s+")).filter((splitWords) => splitWords.length >= 8)
-            .map((splitWords) => {
+        val words = rdd.flatMap(line => line.split("\n")).filter(line => line.nonEmpty)
+          .map(word => word.split("\\s+")).filter(splitWords => splitWords.length >= 8)
+            .map(splitWords => {
             Log.log.debug("[Source] tuple: deviceID " + splitWords(DatasetParsing.DeviceIdField) +
               ", property " + valueField + " " + fieldList.get(valueField))
             Log.log.debug("[Source] fields: " +
@@ -61,7 +62,7 @@ class FileParserSource() extends Serializable{
             }
 
             res
-        })
+        }).repartition(sourceParDeg)
         val endTime = System.nanoTime
         val latency = endTime - startTime // Measure the time it took to process the data
         Log.log.warn(s"[Source] latency: $latency")

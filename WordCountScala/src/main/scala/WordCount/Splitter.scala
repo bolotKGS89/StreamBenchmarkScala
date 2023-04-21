@@ -20,17 +20,18 @@ class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext, parDegree:
           val startTime = System.nanoTime()
 //             val startMetrics = taskMetrics
 
-          val words = rdd.repartition(parDegree).filter((data) => !data._1.isEmpty)
-          .flatMap((data) => {
-            counter.add(data._1.getBytes.length)
+          val words = rdd.filter{case (line, _) => line.nonEmpty }
+          .flatMap{ case (line, ts) =>
+            counter.add(line.getBytes.length)
             lineCount += 1
-            val words = data._1.split(" ")
-            timestamp = data._2
+            val words = line.split(" ")
+            timestamp = ts
             words
-          }).map((word) => {
+          }.map{ word =>
             wordCount += 1
             (word, 1)
-          }).reduceByKey(_ + _).map((wordTuple) => (wordTuple._1, wordTuple._2, timestamp))
+          }.reduceByKey(_ + _)
+           .map((wordTuple) => (wordTuple._1, wordTuple._2, timestamp))
 
 //            val endMetrics = taskMetrics
 //            val latency = taskContext.taskMetrics.executorRunTime
@@ -52,7 +53,7 @@ class Splitter(lines: DStream[(String, Long)], ssc: StreamingContext, parDegree:
 //          Log.log.warn(s"[Splitter] bandwidth: $formattedMbs MB/s")
 
           words
-        })
+        }).repartition(parDegree)
 
     }
 }

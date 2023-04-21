@@ -1,35 +1,37 @@
 package WordCount
 
-import Util.Log
+import Util.{Log, Sampler}
 import org.apache.spark.TaskContext
 import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.dstream.DStream
 import org.apache.spark.executor.TaskMetrics
 
 import java.io.FileNotFoundException
-import scala.collection.mutable.Queue
+import scala.collection.mutable
 
 class FileParserSource(path: String, ssc: StreamingContext, parDegree: Int) {
 
   def parseDataSet(): DStream[(String, Long)] = {
     var timestamp = 0L
     try {
-          val counter = ssc.sparkContext.longAccumulator
+
           val rdd = ssc.sparkContext.textFile(path)
 
           ssc.queueStream(
-            Queue(rdd)
+            mutable.Queue(rdd)
           ).transform({ rdd =>
+            val counter = ssc.sparkContext.longAccumulator
 //            val taskContext = TaskContext.get
             val startTime = System.nanoTime()
 //             val startMetrics = taskMetrics
+            val throughput = new Sampler
 
-             val res = rdd.repartition(parDegree).flatMap((line) => {
-             val splitLine = line.split("\n").filter((line) => !line.isEmpty)
+             val res = rdd.flatMap{ line =>
+             val splitLine = line.split("\n").filter(line => line.nonEmpty)
              timestamp = System.nanoTime
              counter.add(line.getBytes.length)
-             splitLine })
-            .map((line) => (line, timestamp))
+             splitLine }
+            .map{ line => (line, timestamp)}.repartition(parDegree)
 
              val endTime = System.nanoTime()
 //             val endMetrics = taskMetrics
@@ -51,7 +53,7 @@ class FileParserSource(path: String, ssc: StreamingContext, parDegree: Int) {
 //             Log.log.warn(s"[Source] bandwidth: $formatted_mbs MB/s")
 
              res
-        })
+        }).repartition(parDegree)
 
     } catch {
       case _: FileNotFoundException | _: NullPointerException => {

@@ -64,17 +64,18 @@ class FraudPredictor extends Serializable {
 
       val counter = ssc.sparkContext.longAccumulator("Predictor accumulator")
 
-      var predictor: ModelBasedPredictor = null
 
-      if (predModel.equals("mm")) {
-        predictor = new MarkovModelPredictorJava()
-      }
 
       val cachedRDD = lines.repartition(predictorParDeg).map { case (entityId, record, timestamp) =>
         (entityId, (record, timestamp))
       }.groupByKey()
         .flatMap { itr =>
           itr._2.map { case (record, timestamp) =>
+            var predictor: ModelBasedPredictor = null
+
+            if (predModel.equals("mm")) {
+              predictor = new MarkovModelPredictorJava()
+            }
             // add record to recordSeq
             val records = new mutable.ParHashMap[String, ListBuffer[String]]
             var recordSeq: ListBuffer[String] = records.getOrElse(itr._1, new ListBuffer[String])
@@ -89,7 +90,7 @@ class FraudPredictor extends Serializable {
 
             (itr._1, p, timestamp)
           }
-        }.persist(StorageLevel.MEMORY_AND_DISK)
+        }.persist(StorageLevel.DISK_ONLY)
 
       val filteredRDD = cachedRDD.filter { case (_, p, _) => p.isOutlier }
         .map { case (entityId, p, timestamp) =>
