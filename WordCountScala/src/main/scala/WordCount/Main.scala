@@ -73,7 +73,7 @@ object SparkWordCount {
 
 
     wordCounts.print(100)
-
+    MetricGroup.dumpAll()
 
     ssc.start()
     ssc.awaitTerminationOrTimeout(60000)
