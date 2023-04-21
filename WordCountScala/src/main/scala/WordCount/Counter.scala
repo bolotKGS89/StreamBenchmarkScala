@@ -34,7 +34,7 @@ class Counter(words: DStream[(String, Int, Long)], ssc: StreamingContext, sampli
 //      Log.log.info(s"[Counter] bandwidth: $formattedMbs MB/s")
 
       MetricGroup.add("latency", sampler)
-
+      MetricGroup.dumpAll()
       //            val endMetrics = taskMetrics
       //            val latency = taskContext.taskMetrics.executorRunTime
       //            val inputBytes = endMetrics.inputMetrics.bytesRead - startMetrics.inputMetrics.bytesRead

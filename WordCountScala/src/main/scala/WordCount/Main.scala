@@ -71,8 +71,7 @@ object SparkWordCount {
     //3rd stage
     val wordCounts = new Counter(words, ssc, sampling, counterParDeg).count()
 
-    Log.log.info("Dumping metrics")
-    MetricGroup.dumpAll()
+
     wordCounts.print(100)
 
 
