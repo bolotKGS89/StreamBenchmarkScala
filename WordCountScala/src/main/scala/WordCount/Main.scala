@@ -71,9 +71,10 @@ object SparkWordCount {
     //3rd stage
     val wordCounts = new Counter(words, ssc, sampling, counterParDeg).count()
 
-    wordCounts.print(100)
     Log.log.info("Dumping metrics")
     MetricGroup.dumpAll()
+    wordCounts.print(100)
+
 
     ssc.start()
     ssc.awaitTerminationOrTimeout(60000)

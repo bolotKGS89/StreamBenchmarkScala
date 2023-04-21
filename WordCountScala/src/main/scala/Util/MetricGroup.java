@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Stack;
 
 public class MetricGroup implements Serializable {
-    private static HashMap<String, Stack<Sampler>> map;
+    private static final HashMap<String, Stack<Sampler>> map;
     static {
         map = new HashMap<>();
     }
